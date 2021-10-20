@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>currDate</title>
+  <link rel="stylesheet" href="currDate.css">
+</head>
+<body>
+  <div class="currentDay">
+    <div class="calendar">
+      <div class="calendar-body">
+        <span class="month-name"></span>
+        <span class="day-name"></span>
+        <span class="date-number"></span>
+        <span class="year"></span>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    const dayNumber = new Date().getDate();
+    const year = new Date().getFullYear();
+    const dayName = new Date().toLocaleString("default", {weekday: "long"});
+    const monthName = new Date().toLocaleString("default", {month: "long"});
+
+    document.querySelector(".month-name").innerHTML = monthName;
+    document.querySelector(".day-name").innerHTML = dayName;
+    document.querySelector(".date-number").innerHTML = dayNumber;
+    document.querySelector(".year").innerHTML = year;
+  </script>
+
+  
+</body>
+</html>
