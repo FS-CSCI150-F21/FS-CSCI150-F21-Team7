@@ -23,7 +23,7 @@
 }
 
 #active:checked ~ .wrapper{
-  clip-path: circle(75%);
+  clip-path: circle(100%);
 } 
 
 
@@ -98,6 +98,6 @@
   color:#c850c0;
 }
 
-input{
+.menu-box input{
   display: none;
 }

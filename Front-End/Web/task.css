@@ -108,6 +108,10 @@ main{
   margin-bottom: 1rem;
 }
 
+#tasks .content{
+  flex: 1 1 0%;
+}
+
 #tasks .task .content .text{
   color: var(--light);
   font-size: 1.125rem;
