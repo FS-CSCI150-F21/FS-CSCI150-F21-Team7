@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Registration</title>
+<link rel='stylesheet' href='regstyle.css' type='text/css' />
+<script src="control.js"></script>
+</head>
+    
+<body>
+    
+    <h1 class = "top"><b>Account Creation</b></h1>
+    <div id="error"></div>
+    <form name="fbox" class="fbox" onsubmit="return validateForm()">
+    <ul>
+        <li><label for="userid">Username</label></li>
+        <li><input type="text" name="userid" placeholder="Account Name"></li>
+        <sub>Username Must be between 5-14 characters</sub>
+        
+        <li><label for="pass">Password</label></li>
+        <li><input type="password" name="pass"></li>
+        <sub>Password Must be between 5-14 characters</sub>
+
+        <li>Re-Enter Password</li>
+        <li><input type="password" name="check"></li>
+        
+        <li><label for="email">Email</label></li>
+        <li><input type="text" name="email" placeholder="user@email.com" id="mail"></li>
+        
+        <li><label for="nm">Name</label></li>
+        <li><input type="text" name="nm" id ="name"></li>
+        
+        <li><label for="gender">Gender</label></li>
+        <li><select name="gender">
+        <option selected=" " value="Default">Select Gender</option>
+        <option value="GM">Male</option>
+        <option value="GF">Female</option>
+        <option value="BN">Rather not Specify</option>
+        </select></li>
+        
+        <li><label for="region">Region</label></li>
+        <li><select name="region">
+        <option selected=" " value="Default">Select a Region</option>
+        <option value="UW">USA West</option>
+        <option value="UC">USA Central</option>
+        <option value="UE">USA East</option>
+        </select></li>
+        
+        <button type="submit" onclick="validform(event)">Submit</button>
+    </ul>
+    </form>
+    <p>Existing Account?<a href="login.html">Return to Login</a></p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.fbox{
+    width: 380px;
+    height: 410px;
+    position:relative;
+    margin:auto;
+    background: bisque;
+    padding: px;
+    border-style: solid;
+    border-width: thick;
+    border-color: #A35A59;
+    /*
+    border-top-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    */
+    border-radius: 60px;
+}
+body form ul li{
+    padding: 1px
+}
+body h1 b {
+    padding-left: 270px;
+    text-align: center;
+    position: relative;
+    margin:auto;
+}
+
+body ul sub{
+    font-size: 75%;
+    margin-top: 0%;
+}
+
+body p {
+    padding-left: 270px;
+}
+
+body{
+    background-color: rgb(214, 148, 24);
+}
+ul li{
+    list-style-type: none;
+}
+
+ul button{
+    margin-top: 10px;
+}
