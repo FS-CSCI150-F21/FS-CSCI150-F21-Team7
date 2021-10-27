@@ -57,3 +57,16 @@ export function createUser(username, password, firstname, lastname, birthday, em
     }
 };
 
+export function createTask(name, description, points, datecreated, datedue){
+    return{
+        name : {
+            "completed": false,
+            "description": description,
+            "points": points,
+            "datecreated": datecreated,
+            "datedue": datedue
+        }
+    }
+
+};
+
