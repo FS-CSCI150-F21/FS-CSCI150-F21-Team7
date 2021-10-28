@@ -4,7 +4,14 @@ const path = require('path');
 const app = express();
 //const port = process.env.PORT || 3000;
 const router = express.Router();
+//import { initializeApp } from 'firebase/app';
 
+// TODO: Replace the following with your app's Firebase project configuration
+/*const firebaseConfig = {
+  //...
+};*/
+
+//const app = initializeApp(firebaseConfig);
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }))
 

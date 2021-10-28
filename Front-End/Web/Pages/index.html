@@ -43,6 +43,13 @@
   </form>
 
 <script>
+  var xhr = new XMLHttpRequest();
+        xhr.open("POST", "login", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            username: "TestUser",
+            password: "PaSsWoRd123"
+        }));
   var fields = document.querySelectorAll(".textb input");
   var btn = document.querySelector(".btn");
 
@@ -53,9 +60,17 @@
       btn.disabled = true;
   }
 
+
   fields[0].addEventListener("keyup", check);
   fields[1].addEventListener("keyup", check);
-
+     // creates and sends POST request to backend
+    var xhr = new XMLHttpRequest();
+        xhr.open("POST", "login", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            username: "TestUser",
+            password: "PaSsWoRd123"
+        }));
   document.querySelector(".show-password").addEventListener("click", 
   function(){
     if(this.classList[2] == "fa-eye-slash"){
