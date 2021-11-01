@@ -1,8 +1,8 @@
 // LINK FOR WEB SDK LIBRARY https://firebase.google.com/docs/database/web/start //
 //
-import { initializeApp } from "./node_modules/firebase/app";
-import { getAnalytics } from "./node_modules/firebase/analytics";
-import { getDatabase ,ref, child, get } from "./node_modules/firebase/database";
+import { initializeApp } from (path.join(__dirname,'node_modules/firebase/app'));
+import { getAnalytics } from (path.join(__dirname,'node_modules/firebase/analytics'));
+import { getDatabase ,ref, child, get } from (path.join(__dirname,'node_modules/firebase/database'));
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
