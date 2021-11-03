@@ -1,6 +1,6 @@
-# Employee Manager
+# Quotidian
 
-> Vue.js app to manage employees that uses FireStore as a backend.
+> Vue.js app that uses FireStore as a backend.
 
 ## Build Setup
 
@@ -21,9 +21,7 @@ npm run build --report
 ## App Info
 
 ### Author
-
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
+Edmund
 
 ### Version
 
