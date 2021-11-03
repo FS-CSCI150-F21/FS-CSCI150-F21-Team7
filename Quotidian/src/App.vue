@@ -9,12 +9,12 @@
 
 <script>
 import Navbar from './components/Navbar';
-import ViewEmployee from './components/ViewEmployee';
+import Home from './components/Home';
 export default {
   name: 'app',
   components: {
     Navbar,
-    ViewEmployee
+    Home
   }
 }
 </script>
