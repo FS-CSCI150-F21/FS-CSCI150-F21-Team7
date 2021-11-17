@@ -6,6 +6,7 @@
         <ul class="right">
           <li v-if="isLoggedin"><span class="email black-text"> {{currentUser}}</span></li>
           <li v-if="isLoggedin"><router-link to="/">Dashboard</router-link></li>
+          <li v-if="isLoggedin"><router-link to="/calendar">Calendar</router-link></li>
           <li v-if="!isLoggedin">
             <router-link to="/login">Login</router-link>
           </li>

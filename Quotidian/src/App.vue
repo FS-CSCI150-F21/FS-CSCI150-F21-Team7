@@ -1,26 +1,29 @@
 <template>
   <div id="app">
-    <Navbar :key="$route.fullPath"/>
+    <Navbar :key="$route.fullPath" />
     <div class="container">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Calendar from "./components/Calendar";
+
 export default {
-  name: 'app',
+  name: "app",
   components: {
+    Calendar,
     Navbar,
-    Home
-  }
-}
+    Home,
+  },
+};
 </script>
 
 <style>
-  nav {
-    margin-bottom:10px;
-  }
+nav {
+  margin-bottom: 10px;
+}
 </style>

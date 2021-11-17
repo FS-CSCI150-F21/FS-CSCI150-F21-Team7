@@ -4,6 +4,7 @@ import Home from "@/components/Home";
 import ViewEmployee from "@/components/ViewEmployee";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
+import Calendar from "@/components/Calendar";
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -14,6 +15,14 @@ let router = new Router({
       path: "/",
       name: "home",
       component: Home,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/calendar",
+      name: "calendar",
+      component: Calendar,
       meta: {
         requiresAuth: true
       }
