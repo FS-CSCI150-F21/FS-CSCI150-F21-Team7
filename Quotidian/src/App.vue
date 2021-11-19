@@ -10,12 +10,10 @@
 <script>
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import Calendar from "./components/Calendar";
 
 export default {
   name: "app",
   components: {
-    Calendar,
     Navbar,
     Home,
   },
