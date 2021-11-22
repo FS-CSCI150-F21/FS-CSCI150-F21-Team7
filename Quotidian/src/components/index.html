@@ -1,0 +1,61 @@
+<htm>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href='stle.css'/>
+    </head>
+    <body>
+
+
+        <img alt="image error" src="imgsrc/eye1.png" id="eye" class='eye'/>
+        <img alt="image error" src="imgsrc/face1.png" id='head' class='head'/>
+        <img alt="image error" src="imgsrc/mouth1.png" id='mouth' class='mouth'/>
+        <img alt="image error" src="imgsrc/hair1.png" id='hair' class='hair'/>
+        <img alt="image error" src="imgsrc/nose1.png" id='nose' class='nose'/>
+
+        <div>"player username"</div>
+        <img src="imgsrc/background.jpg" class = 'imagebox'/>
+        <br><button onclick="changeeye1()" class='button'>eye1</button>
+        <br><button onclick="changeeye2()" class='button'>eye2</button>
+        <br><button onclick="changeface1()" class='button'>head1</button>
+        <br><button onclick="changeface2()" class='button'>head2</button>
+        <br><button onclick="changemouth1()" class='button'>mouth1</button>
+        <br><button onclick="changemouth2()" class='button'>mouth2</button>
+        <br><button onclick="changenose1()" class='button'>nose1</button>
+        <br><button onclick="changenose2()" class='button'>nose2</button>
+        <br><button onclick="changehair1()" class='button'>hair1</button>
+        <br><button onclick="changehair2()" class='button'>hair2</button>
+
+        <script language="javascript">
+            function changeeye1() {
+                    document.getElementById("eye").src = "imgsrc/eye2.png";
+            }
+            function changeeye2() {
+                    document.getElementById("eye").src = "imgsrc/eye1.png";
+            }
+            function changeface1() {
+                    document.getElementById("head").src = "imgsrc/face2.png";
+            }
+            function changeface2() {
+                    document.getElementById("head").src = "imgsrc/face1.png";
+            }
+            function changemouth1() {
+                    document.getElementById("mouth").src = "imgsrc/mouth2.png";
+            }
+            function changemouth2() {
+                    document.getElementById("mouth").src = "imgsrc/mouth1.png";
+            }
+            function changenose1() {
+                    document.getElementById("nose").src = "imgsrc/nose2.png";
+            }
+            function changenose2() {
+                    document.getElementById("nose").src = "imgsrc/nose1.png";
+            }
+            function changehair1() {
+                    document.getElementById("hair").src = "imgsrc/hair2.png";
+            }
+            function changehair2() {
+                    document.getElementById("hair").src = "imgsrc/hair1.png";
+            }
+        </script>
+    </body>
+</htm>
