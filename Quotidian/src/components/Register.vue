@@ -31,8 +31,35 @@
 </template>
 
 <script>
+console.log("i am right here")
 import firebase from "firebase";
+//import db from './firebaseInit';
+async ()=>{
 
+  console.log("i am not right here");
+await setDoc(doc(firebase,"users","ally"), {
+
+  name: "ally",
+  username: "deded",
+  email: " dedefde@gfre.com",
+
+});
+}
+//import { collection, docRef } from './firebaseInit';
+
+async (dispatch)=>{
+try {
+  console.log(" I aM WORKING");
+    const docRef = await addDoc(collection(db, "newusers"), {
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
 export default {
   name: "register",
 
