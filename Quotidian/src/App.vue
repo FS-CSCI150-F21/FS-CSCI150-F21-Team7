@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
+<v-app>
+  <div id="app" data-app>
     <Navbar :key="$route.fullPath" />
     <div class="container">
       <router-view />
     </div>
   </div>
+</v-app>
 </template>
 
 <script>
