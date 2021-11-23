@@ -13,6 +13,7 @@
 
 <script>
   import db from './firebaseInit'
+  import firebase from "firebase";
   export default {
     name: 'home',
     data () {
@@ -22,7 +23,7 @@
       }
     },
     created () {
-      db.collection('users').orderBy('dept').get().then((querySnapshot) => {
+      db.collection('users').get().then((querySnapshot) => {
         this.loading = false
         querySnapshot.forEach((doc) => {
           const data = {

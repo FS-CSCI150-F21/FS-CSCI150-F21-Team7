@@ -33,33 +33,7 @@
 <script>
 console.log("i am right here")
 import firebase from "firebase";
-//import db from './firebaseInit';
-async ()=>{
-
-  console.log("i am not right here");
-await setDoc(doc(firebase,"users","ally"), {
-
-  name: "ally",
-  username: "deded",
-  email: " dedefde@gfre.com",
-
-});
-}
-//import { collection, docRef } from './firebaseInit';
-
-async (dispatch)=>{
-try {
-  console.log(" I aM WORKING");
-    const docRef = await addDoc(collection(db, "newusers"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
+var auth = firebase.auth();
 export default {
   name: "register",
 
@@ -69,7 +43,6 @@ export default {
       password: '',
     };
   },
-
   methods: {
     register: function (e) {
       firebase
@@ -77,6 +50,19 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password) //saves to firebase authentication
         .then(
           (user) => {
+              var userID = auth.currentUser.uid
+              console.log("hello there");
+              var db = firebase.firestore();
+              db.collection('users').doc(userID).set({
+              email:  this.email,
+              //password: this.password,
+              admin: false,
+              username: " ",
+              avatar: " ",
+              bio: " ",
+
+              
+            });
             alert(`Account created for ${user.email}`);
             this.$router.push("/");
           },

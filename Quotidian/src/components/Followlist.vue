@@ -52,6 +52,7 @@ export default {
             'id': doc.id,
             'name': doc.data().name,
             'dept': doc.data().dept,
+            'email': doc.data().email,
             //'position': doc.data().position
           }
           this.users.push(data)

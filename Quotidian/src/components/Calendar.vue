@@ -159,6 +159,8 @@
 
 <script>
 import db from "./firebaseInit"; //importing the database from the main.js file
+import firebase from "firebase";
+var auth = firebase.auth();
 export default {
   data: () => ({
     today: new Date().toISOString().substring(0, 10),
@@ -223,30 +225,39 @@ export default {
   },
   methods: {
     async getEvents() {
-      let snapshot = await db.collection("calEvent").get(); //retrieve events from firebase
-      let events = []; //events from firebase will be stored here
-      snapshot.forEach((doc) => {
+        //console.log(userID);
+        var userID = auth.currentUser.uid
+        let snapshot = await db.collection("calEvent").doc(userID).get(); //retrieve events from firebase
+        let events = []; //events from firebase will be stored here
+        snapshot.forEach((doc) => {
         let appData = doc.data();
         appData.id = doc.id;
-        events.push(appData); //parsing it to events="events" <v-calendar>
+        events.push(appData);
+        //parsing it to events="events" <v-calendar>
       });
       this.events = events;
     },
     async addEvent() {
       if (this.name && this.start && this.end) {
-        await db.collection("calEvent").add({
-          name: this.name,
+        var userID = auth.currentUser.uid
+        await db.collection("calEvent").doc(userID).add({
+          
+          task: {
+            tasks:{
+         // name: this.name,
           details: this.details,
           start: this.start,
           end: this.end,
           color: this.color,
+              }
+            }
         });
         this.getEvents();
-        this.name = "";
-        this.details = "";
-        this.start = "";
-        this.end = "";
-        this.color = "#1976D2";
+        this.task.name = "";
+        this.task.details = "";
+        this.task.start = "";
+        this.task.end = "";
+        this.task.color = "#1976D2";
       } else {
         alert("Name, Start & End dates are required");
       }
