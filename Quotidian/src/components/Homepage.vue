@@ -1,17 +1,11 @@
 <template>
     <div>
-    <nav class="navbar-background">
-        <div class="rightNav">
-            <button class="btn btn-sm">Menu</button>
-        </div>
-    </nav>
- 
     <section class="firstsection">
         <div class="box-main">
             <div class="firstHalf">
                 <h1 class="text-big" id="web">Tasks List</h1>
                 <section class="task-list">
-                    
+
                     <div id="tasks">
                        <div class="task">
                         <div class="content">
@@ -27,14 +21,12 @@
                           <button class="delete">Delete</button>
                         </div>
                       </div> 
-
                     </div>
                   </section>
 
             </div>
         </div>
     </section>
-    <script src="homepage.js"></script>
  
     <section class="secondsection">
         <div class="box-main">
@@ -48,8 +40,9 @@
             </div>
         </div>
     </section> 
+ </div>
  </template>
- 
+
  <style>
      /* Settting color scheme */
 :root{
