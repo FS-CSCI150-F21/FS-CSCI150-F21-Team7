@@ -227,7 +227,7 @@ export default {
     async getEvents() {
         //console.log(userID);
         var userID = auth.currentUser.uid
-        let snapshot = await db.collection("calEvent").doc(userID).get(); //retrieve events from firebase
+        let snapshot = await db.collection(userID).get(); //retrieve events from firebase
         let events = []; //events from firebase will be stored here
         snapshot.forEach((doc) => {
         let appData = doc.data();
@@ -240,24 +240,23 @@ export default {
     async addEvent() {
       if (this.name && this.start && this.end) {
         var userID = auth.currentUser.uid
-        await db.collection("calEvent").doc(userID).add({
-          
-          task: {
-            tasks:{
-         // name: this.name,
-          details: this.details,
-          start: this.start,
-          end: this.end,
-          color: this.color,
-              }
-            }
+         
+        //var test = db.collection("tasks").doc(userID);
+        
+        await db.collection(userID).doc().set({
+            name: this.name,
+            details: this.details,
+            start: this.start,
+            end: this.end,
+            color: this.color,
+            
         });
         this.getEvents();
-        this.task.name = "";
-        this.task.details = "";
-        this.task.start = "";
-        this.task.end = "";
-        this.task.color = "#1976D2";
+        this.name = "";
+        this.details = "";
+        this.start = "";
+        this.end = "";
+        this.color = "#1976D2";
       } else {
         alert("Name, Start & End dates are required");
       }
