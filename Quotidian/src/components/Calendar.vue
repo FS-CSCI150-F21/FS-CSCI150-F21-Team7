@@ -241,7 +241,7 @@ export default {
       if (this.name && this.start && this.end) {
         var userID = auth.currentUser.uid
          
-        //var test = db.collection("tasks").doc(userID);
+        //var test = db.collection(userID).doc();
         
         await db.collection(userID).doc().set({
             name: this.name,
@@ -262,16 +262,20 @@ export default {
       }
     },
     async updateEvent(ev) {
+      var userID = auth.currentUser.uid
+
       //Saves edited event to firebase
-      await db.collection("calEvent").doc(this.currentlyEditing).update({
+      await db.collection(userID).doc(this.currentlyEditing).update({
         details: ev.details,
       });
       this.selectedOpen = false;
       this.currentlyEditing = null;
     },
     async deleteEvent(ev) {
+      var userID = auth.currentUser.uid
+
       //Delete function call
-      await db.collection("calEvent").doc(ev).delete();
+      await db.collection(userID).doc(ev).delete();
 
       this.selectedOpen = false;
       this.getEvents();

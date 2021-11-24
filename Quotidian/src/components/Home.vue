@@ -27,11 +27,11 @@
         this.loading = false
         querySnapshot.forEach((doc) => {
           const data = {
-            'id': doc.id,
-            'employee_id': doc.data().employee_id,
+            'username': doc.id,
+           // 'employee_id': doc.data().employee_id,
             'name': doc.data().name,
-            'dept': doc.data().dept,
-            'position': doc.data().position
+            //'dept': doc.data().dept,
+            //'position': doc.data().position
           }
           this.users.push(data)
         })

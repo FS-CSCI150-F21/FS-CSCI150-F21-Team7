@@ -16,6 +16,16 @@
                 <input type="password" id="password" v-model="password" />
                 <label class="white-text" for="password">Password</label>
               </div>
+              <div class="input-field">
+                <i class="material-icons white-text prefix">email</i>
+                <input type="text" id="username" v-model="username" />
+                <label class="white-text" for="username">Username</label>
+              </div>
+               <div class="input-field">
+                <i class="material-icons white-text prefix">email</i>
+                <input type="text" id="bio" v-model="bio" />
+                <label class="white-text" for="bio">Bio</label>
+              </div>
               <button
                 v-on:click="register"
                 class="btn btn-large btn-extended grey lighten-4 black-text"
@@ -31,7 +41,6 @@
 </template>
 
 <script>
-console.log("i am right here")
 import firebase from "firebase";
 var auth = firebase.auth();
 export default {
@@ -55,13 +64,12 @@ export default {
               var db = firebase.firestore();
               db.collection('users').doc(userID).set({
               email:  this.email,
-              //password: this.password,
               admin: false,
-              username: " ",
-              avatar: " ",
+              username: this.username,
+              //avatar: " ",
               bio: " ",
+              friendslist: [],
 
-              
             });
             alert(`Account created for ${user.email}`);
             this.$router.push("/");

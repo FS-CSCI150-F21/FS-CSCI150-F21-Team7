@@ -13,6 +13,9 @@
           <li v-if="isLoggedin">
             <router-link class="amber darken-2 btn white-text" to="/calendar">Calendar</router-link>
           </li>
+           <li v-if="isLoggedin">
+            <router-link class="amber darken-2 btn white-text" to="/followlist">friends</router-link>
+          </li>
           <li v-if="!isLoggedin">
             <router-link class="amber darken-2 btn white-text" to="/login">Login</router-link>
           </li>

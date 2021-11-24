@@ -5,6 +5,7 @@ import ViewEmployee from "@/components/ViewEmployee";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
+import Followlist from "@/components/Followlist";
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -23,6 +24,14 @@ let router = new Router({
       path: "/calendar",
       name: "calendar",
       component: Calendar,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/followlist",
+      name: "followlist",
+      component: Followlist,
       meta: {
         requiresAuth: true
       }
@@ -51,6 +60,7 @@ let router = new Router({
         requiresAuth: true
       }
     },
+    
   ]
 });
 
