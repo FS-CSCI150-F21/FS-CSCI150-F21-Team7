@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/components/Home";
+import Homepage from "@/components/Homepage";
 import ViewEmployee from "@/components/ViewEmployee";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
@@ -15,6 +16,14 @@ let router = new Router({
       path: "/",
       name: "home",
       component: Home,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/homepage",
+      name: "homepage",
+      component: Homepage,
       meta: {
         requiresAuth: true
       }
