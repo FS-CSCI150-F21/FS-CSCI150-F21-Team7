@@ -157,6 +157,7 @@
   </v-row>
 </template>
 
+
 <script>
 import db from "./firebaseInit"; //importing the database from the main.js file
 import firebase from "firebase";

@@ -31,7 +31,6 @@
 </template>
 
 <script>
-console.log("i am right here")
 import firebase from "firebase";
 var auth = firebase.auth();
 export default {
@@ -39,8 +38,8 @@ export default {
 
   data: function () {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
   },
   methods: {
@@ -50,18 +49,16 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password) //saves to firebase authentication
         .then(
           (user) => {
-              var userID = auth.currentUser.uid
-              console.log("hello there");
-              var db = firebase.firestore();
-              db.collection('users').doc(userID).set({
-              email:  this.email,
+            var userID = auth.currentUser.uid;
+            console.log("hello there");
+            var db = firebase.firestore();
+            db.collection("users").doc(userID).set({
+              email: this.email,
               //password: this.password,
               admin: false,
               username: " ",
               avatar: " ",
               bio: " ",
-
-              
             });
             alert(`Account created for ${user.email}`);
             this.$router.push("/");
