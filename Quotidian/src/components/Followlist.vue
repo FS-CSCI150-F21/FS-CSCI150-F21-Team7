@@ -17,7 +17,7 @@
                 Search
               </button>
               </div>
-   <!-- </div>
+    </div>
       <div class="list">
         <li><button v-on:click="toggleOptions1">MadMaw</button></li>
         <div id="options" v-if="seeoptions1">
@@ -36,7 +36,7 @@
         <button>Follow</button>
         <button>Block</button>  
         <button>View Profile</button>
-        </div> -->
+        </div> 
       </div>
     </div>
 </template>
