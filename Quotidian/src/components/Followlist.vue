@@ -11,14 +11,14 @@
                 <label class="white-text" for="email">Enter username</label>
               </div>
                 <button
-                v-on:click="s"
+                v-on:click="followlist"
                 class="btn btn-large btn-extended grey lighten-4 black-text"
               >
                 Search
               </button>
               </div>
     </div>
-      <div class="list">
+     <!-- <div class="list">
         <li><button v-on:click="toggleOptions1">MadMaw</button></li>
         <div id="options" v-if="seeoptions1">
         <button>Follow</button>
@@ -37,7 +37,7 @@
         <button>Block</button>  
         <button>View Profile</button>
         </div> 
-      </div>
+      </div>-->
     </div>
 </template>
 
@@ -58,20 +58,33 @@ var exists = false;
 export default {
  
   name: "followlist",
-  data () {
+  data: function () {
     return {
       users: [],
       loading: true,
+      username: "",
       word: 'This is a friends list',
       content: 'Info of User',
       content2: 'A search bar',
-      seeoptions1: false,
-      seeoptions2: false,
-      seeoptions3: false
+      //seeoptions1: false,
+     // seeoptions2: false,
+      //seeoptions3: false
     }
   },
   methods:{
-    toggleOptions1(){
+    followlist: function(e) {
+      db.collection('users').get().then((querySnapshot) =>{
+        this.loading = false
+        console.log("succes");
+        querySnapshot.forEach((doc) => {
+          console.log("succes");
+          if(this.username == doc.data().username){
+            console.log("succes");
+          }
+        })
+      })
+    },
+   /* toggleOptions1(){
       this.seeoptions1 = !this.seeoptions1
       this.seeoptions2 = false
       this.seeoptions3 = false
@@ -85,16 +98,11 @@ export default {
       this.seeoptions3 = !this.seeoptions3
       this.seeoptions2 = false
       this.seeoptions1 = false
-    },
+    },*/
   },
   created () {
    // Boolean userExists = false;
-      db.collection('users').get().then((querySnapshot) =>{
-        this.loading = false
-        querySnapshot.forEach((doc) => {
-          
-        })
-      })
+      
       db.collection('users').orderBy('dept').get().then((querySnapshot) => {
         this.loading = false
         querySnapshot.forEach((doc) => {
