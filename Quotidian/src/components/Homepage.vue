@@ -6,20 +6,16 @@
           <h1 class="text-big" id="web">Tasks List</h1>
           <section class="task-list">
             <div id="tasks">
-              <div class="task">
-                <div class="content">
-                  <input
-                    type="text"
-                    class="text"
-                    value="My shiny task"
-                    readonly
-                  />
-                </div>
-                <div class="actions">
-                  <button class="edit">Edit</button>
-                  <button class="delete">Delete</button>
-                </div>
-              </div>
+
+
+
+
+              <!-- Insert Here -->
+
+
+
+
+
             </div>
           </section>
         </div>
@@ -56,7 +52,7 @@
 }
 
 .firstsection {
-  background-color: blueviolet;
+  
   height: 400px;
 }
 
@@ -126,4 +122,106 @@
 .center {
   text-align: center;
 }
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Fira sans', sans-serif;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--dark);
+  color: #FFF;
+}
+
+header{
+  padding: 2rem 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+header h1{
+  font-style: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: var(--gray);
+}
+
+
+main{
+  flex: 1 1 0%;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.task-list{
+  padding: 1rem;
+}
+
+.task-list h2{
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: var(--gray);
+}
+
+#tasks .task{
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--darkest);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+#tasks .content{
+  flex: 1 1 0%;
+}
+
+#tasks .task .content .text{
+  color: var(--light);
+  font-size: 1.125rem;
+  width: 100%;
+  display: block;
+  transition: 0.4s;
+}
+
+#tasks .task .content .text:not(:read-only){
+  color: var(--pink);
+}
+
+#tasks .task .actions{
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.task .actions button{
+  cursor: pointer;
+  margin: 0 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+.task .actions button:hover{
+  opacity: 0.8;
+}
+
+.task .actions button:active{
+  opacity: 0.6;
+}
+
+.task .actions .complete{
+  background-image: linear-gradient(to right, var(--pink), var(--purple));
+  
+  -webkit-text-fill-color: transparent;
+}
+
+
 </style>
