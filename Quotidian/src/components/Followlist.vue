@@ -1,14 +1,23 @@
 <template>
     <div id="profile" class="collection with-header">
     <div class="profview">
-    <!--<div v-if="seeoptions1"><img src="./qPics/Madmaw.png" alt="a profile picture" title="Whatever"></div>
-    <div v-if="seeoptions3"><img src="./qPics/Abs.jpg" alt="a profile picture" title="Whatever"></div>
-    <div v-if="seeoptions2"><img src="./qPics/Taskman.jpg" alt="a profile picture" title="Whatever"></div>-->
+  
     </div>
     <div class="search blue">
-            <!--<input type="search" id="query" name="q" placeholder="search...">
-            <button v-on:click="searchFunction">Search</button>-->
-    </div>
+          <div class="input-field">
+                <div class="input-field">
+                <i class="material-icons prefix"></i>
+                <input type="text" id="username" v-model="username" />
+                <label class="white-text" for="email">Enter username</label>
+              </div>
+                <button
+                v-on:click="s"
+                class="btn btn-large btn-extended grey lighten-4 black-text"
+              >
+                Search
+              </button>
+              </div>
+   <!-- </div>
       <div class="list">
         <li><button v-on:click="toggleOptions1">MadMaw</button></li>
         <div id="options" v-if="seeoptions1">
@@ -27,7 +36,7 @@
         <button>Follow</button>
         <button>Block</button>  
         <button>View Profile</button>
-        </div> 
+        </div> -->
       </div>
     </div>
 </template>
@@ -39,12 +48,15 @@ template{
 </style>
 
 <script>
+//lets see if we can implement the search function using login as
+// a template, change data to match with what u need
 import db from './firebaseInit'
 import firebase from "firebase";
 var auth = firebase.auth();
+var exists = false;
 
 export default {
-  
+ 
   name: "followlist",
   data () {
     return {
@@ -76,6 +88,13 @@ export default {
     },
   },
   created () {
+   // Boolean userExists = false;
+      db.collection('users').get().then((querySnapshot) =>{
+        this.loading = false
+        querySnapshot.forEach((doc) => {
+          
+        })
+      })
       db.collection('users').orderBy('dept').get().then((querySnapshot) => {
         this.loading = false
         querySnapshot.forEach((doc) => {
