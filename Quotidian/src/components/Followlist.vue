@@ -7,7 +7,7 @@
           <div class="input-field">
                 <div class="input-field">
                 <i class="material-icons prefix"></i>
-                <input type="text" id="username" v-model="username" />
+                <input type="text" id="usernames" v-model="usernames" />
                 <label class="white-text" for="email">Enter username</label>
               </div>
                 <button
@@ -22,7 +22,7 @@
         {{ word }}
         <li v-for="user in users" v-bind:key="user.id" class="collection-item">
 
-        <button v-on:click="toggleOptions">{{user.name}}</button>
+        <button v-on:click="followlist">{{user.name}}</button>
         <!--<button v-on:click="seeoptions = !seeoptions">{{user.name}}</button>-->
         <div id="options" v-if="seeoptions">
         <li><button>Follow</button></li>
@@ -55,7 +55,7 @@ export default {
     return {
       users: [],
       loading: true,
-      username: "",
+      usernames: "",
       word: 'This is a friends list',
       content: 'Info of User',
       content2: 'A search bar',
@@ -68,30 +68,27 @@ export default {
     followlist: function(e) {
       db.collection('users').get().then((querySnapshot) =>{
         this.loading = false
-        console.log("succes");
+        //console.log("succes");
+       //checks through database for each documented ID username.
         querySnapshot.forEach((doc) => {
-          console.log("succes");
-          if(this.username == doc.data().username){
-            console.log("succes");
+        
+           var curruser = this.username;
+          if(this.usernames.trim() == doc.data().username.trim() ){
+                        console.log("SUCCESS")
+                        console.log(doc.data().username)
+            
+            //console.log(newFriendID)
           }
+          else
+            console.log("dont know")
+          
+  
+
         })
+       // console.log(stringName)
       })
     },
-   /* toggleOptions1(){
-      this.seeoptions1 = !this.seeoptions1
-      this.seeoptions2 = false
-      this.seeoptions3 = false
-    },
-    toggleOptions2(){
-      this.seeoptions2 = !this.seeoptions2
-      this.seeoptions1 = false
-      this.seeoptions3 = false
-    },
-    toggleOptions3(){
-      this.seeoptions3 = !this.seeoptions3
-      this.seeoptions2 = false
-      this.seeoptions1 = false
-    },*/
+   
   },
   created () {
    // Boolean userExists = false;
