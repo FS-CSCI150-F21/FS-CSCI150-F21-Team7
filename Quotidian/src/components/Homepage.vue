@@ -6,32 +6,60 @@
           <h1 class="text-big" id="web">Tasks List</h1>
           <section class="task-list">
             <div id="tasks">
-
-
-
-
-              <!-- Insert Here -->
-
-
-
-
-
             </div>
           </section>
         </div>
       </div>
     </section>
 
-    <section class="secondsection">
+     <!-- Actions to edit events <section class="secondsection">
       <div class="box-main">
         <div class="firstHalf">
           <h1 class="text-big" id="program">Avatar</h1>
           <p class="text-small">AVATAR</p>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
+
+
+
+<script>
+  import db from './firebaseInit'
+  import firebase from "firebase";
+    //var db = firebase.firestore();
+  export default {
+    name: 'home',
+    data () {
+      return {
+        tasks: [],
+        loading: true
+      }
+    },
+     created () {
+     //   var db = firebase.firestore();
+      var auth = firebase.auth();
+      var userID = auth.currentUser.uid;
+      db.collection(userID).get().then((querySnapshot) => {
+        this.loading = false
+        //console.log("data exists")
+        querySnapshot.forEach((doc) => {
+          const data = {
+            'name': doc.data().name,
+            'details': doc.data().details,
+           //'employee_id': doc.data().employee_id,
+            'start': doc.data().start,
+            'end': doc.data().end,
+            //'dept': doc.data().dept,
+            //'position': doc.data().position
+          }
+          this.tasks.push(data)
+        })
+      })
+    }
+  }
+</script>
 
  <style>
 /* Settting color scheme */
@@ -45,19 +73,11 @@
   --purple: #8b5cf6;
 }
 
-.background {
-  background: black;
-  background-blend-mode: darken;
-  background-size: cover;
-}
-
 .firstsection {
-  
   height: 400px;
 }
 
 .secondsection {
-  background-color: dimgrey;
   height: 400px;
 }
 
@@ -69,16 +89,6 @@
   max-width: 80%;
   margin: auto;
   height: 80%;
-}
-
-.box-sub {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  max-width: 40%;
-  margin: auto;
-  height: 40%;
 }
 
 .firsthalf {
@@ -123,34 +133,12 @@
   text-align: center;
 }
 
+/* Global */
 *{
   box-sizing: border-box;
   margin: 0;
   font-family: 'Fira sans', sans-serif;
 }
-
-body{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: var(--dark);
-  color: #FFF;
-}
-
-header{
-  padding: 2rem 1rem;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-header h1{
-  font-style: 2.5rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  color: var(--gray);
-}
-
 
 main{
   flex: 1 1 0%;
@@ -217,9 +205,9 @@ main{
   opacity: 0.6;
 }
 
-.task .actions .complete{
+.task .actions .edit{
   background-image: linear-gradient(to right, var(--pink), var(--purple));
-  
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
