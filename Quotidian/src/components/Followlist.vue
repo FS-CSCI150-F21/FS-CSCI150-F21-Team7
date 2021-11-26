@@ -18,27 +18,20 @@
               </button>
               </div>
     </div>
-     <!-- <div class="list">
-        <li><button v-on:click="toggleOptions1">MadMaw</button></li>
-        <div id="options" v-if="seeoptions1">
-        <button>Follow</button>
-        <button>Block</button>  
-        <button>View Profile</button>
+      <div class="list right red">
+        {{ word }}
+        <li v-for="user in users" v-bind:key="user.id" class="collection-item">
+
+        <button v-on:click="toggleOptions">{{user.name}}</button>
+        <!--<button v-on:click="seeoptions = !seeoptions">{{user.name}}</button>-->
+        <div id="options" v-if="seeoptions">
+        <li><button>Follow</button></li>
+        <li><button>Block</button></li>  
+        <li><button>View Profile</button></li>
         </div> 
-        <li><button v-on:click="toggleOptions2">The Taskman</button></li>
-        <div id="options" v-if="seeoptions2">
-        <button>Follow</button>
-        <button>Block</button>  
-        <button>View Profile</button>
-        </div> 
-        <li><button v-on:click="toggleOptions3">AbsCutie</button></li>
-        <div id="options" v-if="seeoptions3">
-        <button>Follow</button>
-        <button>Block</button>  
-        <button>View Profile</button>
-        </div> 
-      </div>-->
-    </div>
+      </li>
+      </div>
+     </div>
 </template>
 
 <style>
