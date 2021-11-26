@@ -37,7 +37,7 @@
   </div>
 </template>
 
- <style>
+ <style scoped>
 /* Settting color scheme */
 :root {
   --dark: #374151;
