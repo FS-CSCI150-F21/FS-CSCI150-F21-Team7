@@ -23,4 +23,22 @@ export default {
 </script>
 
 <style scoped>
+.friend {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.indicator {
+  min-width: 10px;
+  min-height: 10px;
+	margin-left: 1rem;
+  background: #999;
+  border-radius: 999px;
+}
+
+  .online {
+		margin-left: 1rem;
+    background: #00FF00;
+  }
 </style>
