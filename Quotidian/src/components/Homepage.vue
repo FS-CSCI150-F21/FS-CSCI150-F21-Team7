@@ -6,24 +6,35 @@
           <h1 class="text-big" id="web">Tasks List</h1>
           <section class="task-list">
             <div id="tasks">
+             <!-- <div class="task">
+                <div class="content">
+                  <input
+                    type="text"
+                    class="text"
+                    value="My shiny task"
+                    readonly
+                  />
+                </div>
+                <div class="actions">
+                  <button class="complete">Complete</button>
+                </div>
+              </div> -->
             </div>
           </section>
         </div>
       </div>
     </section>
 
-     <!-- Actions to edit events <section class="secondsection">
+    <section class="secondsection">
       <div class="box-main">
         <div class="firstHalf">
           <h1 class="text-big" id="program">Avatar</h1>
           <p class="text-small">AVATAR</p>
         </div>
       </div>
-    </section> -->
+    </section>
   </div>
 </template>
-
-
 
 <script>
   import db from './firebaseInit'
@@ -59,9 +70,38 @@
       })
     }
   }
+
+window.addEventListener("load", () => {
+  const form = document.querySelector("#new-task-form");
+  const input = document.querySelector("#new-task-input");
+  const list_el = document.querySelector("#tasks");
+
+
+// Action buttons start here
+    const task_actions_el = document.createElement("div");
+    task_actions_el.classList.add("actions");
+    
+    const task_edit_el = document.createElement("button");
+    task_edit_el.classList.add("complete");
+    task_edit_el.innerHTML= "Complete";
+
+    task_actions_el.appendChild(task_complete_el);
+
+    task_el.appendChild(task_actions_el);
+
+    list_el.appendChild(task_el);
+
+    input.value = "";
+
+//Configuring the clickable buttons
+    task_complete_el.addEventListener("click", () =>{
+      list_el.removeChild(task_el);
+    });
+  });
+
 </script>
 
- <style>
+ <style scoped>
 /* Settting color scheme */
 :root {
   --dark: #374151;
@@ -73,11 +113,15 @@
   --purple: #8b5cf6;
 }
 
+h1 {text-align: center;}
+
 .firstsection {
+  background-color: blueviolet;
   height: 400px;
 }
 
 .secondsection {
+  background-color: dimgrey;
   height: 400px;
 }
 
@@ -133,35 +177,19 @@
   text-align: center;
 }
 
-/* Global */
 *{
   box-sizing: border-box;
   margin: 0;
   font-family: 'Fira sans', sans-serif;
 }
 
-main{
-  flex: 1 1 0%;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-}
-
 .task-list{
   padding: 1rem;
-}
-
-.task-list h2{
-  font-size: 1.5rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  color: var(--gray);
 }
 
 #tasks .task{
   display: flex;
   justify-content: space-between;
-  background-color: var(--darkest);
   padding: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
@@ -170,7 +198,6 @@ main{
 #tasks .content{
   flex: 1 1 0%;
 }
-
 #tasks .task .content .text{
   color: var(--light);
   font-size: 1.125rem;
@@ -178,16 +205,13 @@ main{
   display: block;
   transition: 0.4s;
 }
-
 #tasks .task .content .text:not(:read-only){
   color: var(--pink);
 }
-
 #tasks .task .actions{
   display: flex;
   margin: 0 -0.5rem;
 }
-
 .task .actions button{
   cursor: pointer;
   margin: 0 0.5rem;
@@ -196,20 +220,13 @@ main{
   text-transform: uppercase;
   transition: 0.4s;
 }
-
 .task .actions button:hover{
   opacity: 0.8;
 }
-
 .task .actions button:active{
   opacity: 0.6;
 }
-
-.task .actions .edit{
-  background-image: linear-gradient(to right, var(--pink), var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.task .actions .complete{
+   color: var(--darkest);
 }
-
-
 </style>
