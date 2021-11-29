@@ -25,7 +25,7 @@
         <button v-on:click="followlist">{{user.name}}</button>
         <!--<button v-on:click="seeoptions = !seeoptions">{{user.name}}</button>-->
         <div id="options" v-if="seeoptions">
-        <li><button>Follow</button></li>
+        <li><button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button></li>
         <li><button>Block</button></li>  
         <li><button>View Profile</button></li>
         </div> 
@@ -49,7 +49,6 @@ var auth = firebase.auth();
 var exists = false;
 
 export default {
- 
   name: "followlist",
   data: function () {
     return {
@@ -74,10 +73,14 @@ export default {
         
            var curruser = this.username;
           if(this.usernames.trim() == doc.data().username.trim() ){
-                        console.log("SUCCESS")
-                        console.log(doc.data().username)
-            
-            //console.log(newFriendID)
+            console.log("SUCCESS")
+                        console.log(doc.data().username)  
+                         var userToAdd;
+            const data = {
+                        
+                      'name': doc.data().username,
+                       
+            }//console.log(newFriendID)
           }
           else
             console.log("dont know")
