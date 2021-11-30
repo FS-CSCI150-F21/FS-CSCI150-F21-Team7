@@ -1,11 +1,12 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "@/components/Home";
-import Homepage from "@/components/Homepage";
+//import Home from "@/components/Home";
 import ViewEmployee from "@/components/ViewEmployee";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
+import Friends from "@/components/Friends";
+import Home from "@/components/Homepage";
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -21,17 +22,17 @@ let router = new Router({
       }
     },
     {
-      path: "/homepage",
-      name: "homepage",
-      component: Homepage,
+      path: "/calendar",
+      name: "calendar",
+      component: Calendar,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/calendar",
-      name: "calendar",
-      component: Calendar,
+      path: "/friends",
+      name: "friends",
+      component: Friends,
       meta: {
         requiresAuth: true
       }
