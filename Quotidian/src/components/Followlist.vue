@@ -99,13 +99,15 @@ export default {
         var userID = auth.currentUser.uid;
         let currFriendsList = [];
               db.collection('users').doc(userID).get().then((querySnapshot) =>{
-                currFriendsList = querySnapshot.data().friendslist
+
+                 currFriendsList = querySnapshot.data().friendslist
                   currFriendsList.push(this.usernames)
                    db.collection('users').doc(userID).update({
                       friendslist: currFriendsList
                     })
 
               })
+               alert(`you followed ${this.usernames}`);
     },
   },
   created () {
