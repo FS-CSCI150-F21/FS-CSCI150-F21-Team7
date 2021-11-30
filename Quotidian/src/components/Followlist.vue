@@ -87,7 +87,6 @@ export default {
                       'details': doc.data().bio,
               }
                         this.users.push(data)
-
           }
           else
             console.log("none")
@@ -97,16 +96,17 @@ export default {
       })
     },
     friendrequest: function(e){
-      
         var userID = auth.currentUser.uid;
-      //  const currFriendsList = [db.collection('users').doc(userID).data().friendslist]
-      //  currFriendsList.push(this.usernames)
-        db.collection('users').doc(userID).update({
-          friendslist: firebase.firestore.FieldValue.arrayUnion(this.usernames)
-        })
+        let currFriendsList = [];
+              db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                currFriendsList = querySnapshot.data().friendslist
+                  currFriendsList.push(this.usernames)
+                   db.collection('users').doc(userID).update({
+                      friendslist: currFriendsList
+                    })
 
+              })
     },
-   
   },
   created () {
    
