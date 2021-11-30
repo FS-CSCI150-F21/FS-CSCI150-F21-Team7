@@ -4,7 +4,6 @@ position: absolute;
 width: 800px;
 right: 400px;
 top: 15%;
-text-align: center;
 }
 .head
 {
@@ -56,7 +55,6 @@ text-align: center;
     position: absolute;
     width: 400px;
     height: 400px;
-    right: 570px;
     top: 70px;
     border: 5px solid gray;
     text-align: center;
