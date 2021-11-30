@@ -1,5 +1,5 @@
 <template>
-  <v-row class="fill-height">
+  <v-row class="fill-height col s10">
     <v-col>
       <v-sheet height="64">
         <v-toolbar flat color="white">
@@ -40,7 +40,7 @@
         </v-toolbar>
       </v-sheet>
       <!-- Add event dialog -->
-      <v-dialog v-model="dialog" max-width="500">
+      <v-dialog v-model="dialog" max-width="500" width="600px">
         <v-card>
           <v-container>
             <v-form @submit.prevent="addEvent">
@@ -157,8 +157,11 @@
   </v-row>
 </template>
 
+
 <script>
-import db from './firebaseInit' //importing the database from the main.js file
+import db from "./firebaseInit"; //importing the database from the main.js file
+import firebase from "firebase";
+var auth = firebase.auth();
 export default {
   data: () => ({
     today: new Date().toISOString().substring(0, 10),
@@ -171,6 +174,7 @@ export default {
       "4day": "4 Days",
     },
 
+    user: null,
     name: null,
     details: null,
     start: null,
@@ -185,7 +189,7 @@ export default {
   }),
   computed: {
     title() {
-     //Sets the title for each window
+      //Sets the title for each window
       const { start, end } = this;
       if (!start || !end) {
         return "";
@@ -222,23 +226,31 @@ export default {
   },
   methods: {
     async getEvents() {
-      let snapshot = await db.collection("calEvent").get(); //retrieve events from firebase
-      let events = []; //events from firebase will be stored here
-      snapshot.forEach((doc) => {
+        //console.log(userID);
+        var userID = auth.currentUser.uid
+        let snapshot = await db.collection(userID).get(); //retrieve events from firebase
+        let events = []; //events from firebase will be stored here
+        snapshot.forEach((doc) => {
         let appData = doc.data();
         appData.id = doc.id;
-        events.push(appData); //parsing it to events="events" <v-calendar>
+        events.push(appData);
+        //parsing it to events="events" <v-calendar>
       });
       this.events = events;
     },
     async addEvent() {
-      if(this.name && this.start && this.end){
-        await db.collection("calEvent").add({
-          name: this.name,
-          details: this.details,
-          start: this.start,
-          end: this.end,
-          color: this.color
+      if (this.name && this.start && this.end) {
+        var userID = auth.currentUser.uid
+         
+        //var test = db.collection("tasks").doc(userID);
+        
+        await db.collection(userID).doc().set({
+            name: this.name,
+            details: this.details,
+            start: this.start,
+            end: this.end,
+            color: this.color,
+            
         });
         this.getEvents();
         this.name = "";
@@ -246,18 +258,20 @@ export default {
         this.start = "";
         this.end = "";
         this.color = "#1976D2";
-      }else{
-        alert('Name, Start & End dates are required');
+      } else {
+        alert("Name, Start & End dates are required");
       }
     },
-    async updateEvent(ev) { //Saves edited event to firebase
+    async updateEvent(ev) {
+      //Saves edited event to firebase
       await db.collection("calEvent").doc(this.currentlyEditing).update({
-        details: ev.details
+        details: ev.details,
       });
       this.selectedOpen = false;
       this.currentlyEditing = null;
     },
-    async deleteEvent(ev) { //Delete function call
+    async deleteEvent(ev) {
+      //Delete function call
       await db.collection("calEvent").doc(ev).delete();
 
       this.selectedOpen = false;

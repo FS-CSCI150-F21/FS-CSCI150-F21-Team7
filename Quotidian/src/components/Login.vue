@@ -2,8 +2,8 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col s12 m8 offset-m2">
-          <div class="login card-panel blue-grey darken-4 white-text center">
+        <div class="col s12 m6 offset-m2">
+          <div class="login col s10 card-panel blue-grey darken-4 white-text center">
             <h3>Login</h3>
             <form action="index.html">
               <div class="input-field">
