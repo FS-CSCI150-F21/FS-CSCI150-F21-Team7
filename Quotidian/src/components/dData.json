@@ -1,7 +1,9 @@
 [
-    {"id": 1, "name": "face", "layer": 10,  "source": "Rb88KhY/face1.png"},
-    {"id": 2, "name": "eye", "layer": 15, "source": "L0sWRLM/eye1.png"},
-    {"id": 3, "name": "mouth","layer": 20,  "source": "StHyfby/mouth1.png"},
-    {"id": 4, "name": "nose", "layer": 25, "source": "vdFCgHd/nose1.png"},
-    {"id": 5, "name": "hair", "layer": 30, "source": "NFxmxgw/hair1.png"}
+    {"id": 1, "name": "face", "layer": 10,  "source": "yXmkvJX/face1.png"},
+    {"id": 2, "name": "eye", "layer": 15, "source": "GCs470k/eye4.png"},
+    {"id": 3, "name": "mouth","layer": 20,  "source": "YydVm1m/mouth2.png"},
+    {"id": 4, "name": "nose", "layer": 25, "source": "xG60wWw/nose2.png"},
+    {"id": 5, "name": "brow", "layer": 30, "source": "McjTk9b/brow1.png"},
+    {"id": 6, "name": "hair", "layer": 35, "source": "qJrRKvg/hair4.png"},
+    {"id": 7, "name": "accessory", "layer": 40, "source": "RNVc1MN/acc2.png"}
 ]

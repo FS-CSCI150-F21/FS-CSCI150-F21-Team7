@@ -7,7 +7,7 @@ import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
 import Friends from "@/components/Friends";
 import Home from "@/components/Homepage";
-import Avatar from "@/components/Avatar";
+import AvatarPage from "@/components/AvatarPage";
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -23,9 +23,9 @@ let router = new Router({
       }
     },
     {
-      path: "/Avatar",
-      name: "Avatar",
-      component: Avatar,
+      path: "/AvatarPage",
+      name: "AvatarPage",
+      component: AvatarPage,
       meta: {
         requiresAuth: true
       }

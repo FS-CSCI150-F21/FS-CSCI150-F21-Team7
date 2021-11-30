@@ -17,7 +17,7 @@
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/Avatar"
+            <router-link class="amber darken-2 btn white-text" to="/AvatarPage"
               >Avatar</router-link
             >
           </li>
