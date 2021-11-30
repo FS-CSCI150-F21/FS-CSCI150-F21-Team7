@@ -6,11 +6,20 @@ import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
 import firebase from 'firebase';
+import Avatar from "@/components/Avatar";
 
 Vue.use(Router);
 
 let router = new Router({
   routes: [
+    {
+      path: "/",
+      name: "Avatar",
+      component: Avatar,
+      meta: {
+        requiresAuth: true
+      }
+    },
     {
       path: "/",
       name: "home",
