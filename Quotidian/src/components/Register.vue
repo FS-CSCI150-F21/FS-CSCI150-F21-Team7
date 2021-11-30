@@ -41,6 +41,7 @@
 </template>
 
 <script>
+//import db from './firebaseInit'
 import firebase from "firebase";
 var auth = firebase.auth();
 export default {
@@ -48,8 +49,8 @@ export default {
 
   data: function () {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
   },
   methods: {

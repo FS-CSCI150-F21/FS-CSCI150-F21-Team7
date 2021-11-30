@@ -14,7 +14,7 @@
 <script>
   import db from './firebaseInit'
   import firebase from "firebase";
-    //var db = firebase.firestore();
+   // var db = firebase.firestore();
   export default {
     name: 'home',
     data () {
