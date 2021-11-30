@@ -7,8 +7,8 @@ import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
 import Friends from "@/components/Friends";
 import Home from "@/components/Homepage";
-import firebase from 'firebase';
 import Avatar from "@/components/Avatar";
+import firebase from 'firebase';
 
 Vue.use(Router);
 
@@ -16,16 +16,16 @@ let router = new Router({
   routes: [
     {
       path: "/",
-      name: "Avatar",
-      component: Avatar,
+      name: "home",
+      component: Home,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/",
-      name: "home",
-      component: Home,
+      path: "/Avatar",
+      name: "Avatar",
+      component: Avatar,
       meta: {
         requiresAuth: true
       }
