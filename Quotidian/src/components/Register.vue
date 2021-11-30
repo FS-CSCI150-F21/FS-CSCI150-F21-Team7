@@ -16,6 +16,16 @@
                 <input type="password" id="password" v-model="password" />
                 <label class="white-text" for="password">Password</label>
               </div>
+              <div class="input-field">
+                <i class="material-icons white-text prefix">email</i>
+                <input type="text" id="username" v-model="username" />
+                <label class="white-text" for="username">Username</label>
+              </div>
+               <div class="input-field">
+                <i class="material-icons white-text prefix">email</i>
+                <input type="text" id="bio" v-model="bio" />
+                <label class="white-text" for="bio">Bio</label>
+              </div>
               <button
                 v-on:click="register"
                 class="btn btn-large btn-extended grey lighten-4 black-text"
@@ -35,11 +45,10 @@ import firebase from "firebase";
 var auth = firebase.auth();
 export default {
   name: "register",
-
   data: function () {
     return {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     };
   },
   methods: {
@@ -49,16 +58,16 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password) //saves to firebase authentication
         .then(
           (user) => {
-            var userID = auth.currentUser.uid;
-            console.log("hello there");
-            var db = firebase.firestore();
-            db.collection("users").doc(userID).set({
-              email: this.email,
-              //password: this.password,
+              var userID = auth.currentUser.uid
+              console.log("hello there");
+              var db = firebase.firestore();
+              db.collection('users').doc(userID).set({
+              email:  this.email,
               admin: false,
-              username: " ",
-              avatar: " ",
+              username: this.username,
+              //avatar: " ",
               bio: " ",
+              friendslist: [],
             });
             alert(`Account created for ${user.email}`);
             this.$router.push("/");

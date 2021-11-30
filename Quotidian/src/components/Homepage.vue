@@ -1,12 +1,34 @@
+<!--<template>
+  <div id="home">
+    <ul class="collection with-header">
+      <li class="collection-header"><h1>Tasks</h1></li>
+      <li v-for="user in tasks" v-bind:key="user.id" class="collection-item">
+        <div class="chip">{{user.name}}</div>
+        {{user.details}} {{user.start}} {{user.end}}
+         <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>
+      </li>
+    </ul>
+  </div>
+</template> -->
+
 <template>
   <div class="collection">
     <section class="firstsection">
       <div class="box-main">
         <div class="firstHalf">
-          <h1 class="text-big" id="web">Tasks List</h1>
+        <h1 class="text-big" id="web"> <p class="border">Tasks</p></h1>
+        <section class="task-list">
+            <div id="tasks">
+              <li v-for="user in tasks" v-bind:key="user.id" class="collection-item">
+              <div class="chip">{{user.name}}</div>
+              <div class = "date"> Start Date: {{user.start}} End Date: {{user.end}} </div>
+              Description: {{user.details}}
+              <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>
+            </li>
+          <!--<h1 class="text-big" id="web">Tasks List</h1>
           <section class="task-list">
             <div id="tasks">
-             <!-- <div class="task">
+              \\ <div class="task">
                 <div class="content">
                   <input
                     type="text"
@@ -20,21 +42,21 @@
                 </div>
               </div> -->
             </div>
-          </section>
+          </section> 
         </div>
       </div>
     </section>
 
-    <section class="secondsection">
+    <!-- <section class="secondsection">
       <div class="box-main">
         <div class="firstHalf">
           <h1 class="text-big" id="program">Avatar</h1>
           <p class="text-small">AVATAR</p>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
-</template>
+</template> 
 
 <script>
   import db from './firebaseInit'
@@ -116,23 +138,33 @@ window.addEventListener("load", () => {
 h1 {text-align: center;}
 
 .firstsection {
-  background-color: blueviolet;
+  outline:4px solid black;
+  background-color: #3d5afe!important;
+  height: 700px;
+}
+
+.border{
+ border-style:solid;
+ border-color: white
+}
+
+
+
+.secondsection {
+  background-color: #b388ff!important;
   height: 400px;
 }
 
-.secondsection {
-  background-color: dimgrey;
-  height: 400px;
-}
 
 .box-main {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color:white ;
   max-width: 80%;
   margin: auto;
-  height: 80%;
+  padding: 2rem;
+  height: auto;
 }
 
 .firsthalf {
@@ -152,6 +184,7 @@ h1 {text-align: center;}
   font-size: 35px;
 }
 
+
 .text-small {
   font-size: 18px;
 }
@@ -165,16 +198,42 @@ h1 {text-align: center;}
   margin: auto;
 }
 
-.section-Left {
-  flex-direction: row-reverse;
-}
-
 .paras {
   padding: 0px 65px;
 }
 
 .center {
   text-align: center;
+}
+
+.collection-item {
+    background-color:#b388ff!important;
+    justify-content: space-between;
+    line-height: 1.5rem;
+    padding: 10px 25px;
+    margin: 0;
+    border-bottom: 1px solid black;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+}
+
+.chip {
+    height: 32px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #3d5afe!important;
+    line-height: 32px;
+    padding: 0 12px;
+    border-radius: 16px;
+    background-color: white;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    
+}
+
+.secondary-content {
+  color: blue;
+
 }
 
 *{
@@ -187,31 +246,11 @@ h1 {text-align: center;}
   padding: 1rem;
 }
 
-#tasks .task{
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-}
-
-#tasks .content{
-  flex: 1 1 0%;
-}
-#tasks .task .content .text{
-  color: var(--light);
-  font-size: 1.125rem;
-  width: 100%;
-  display: block;
-  transition: 0.4s;
-}
-#tasks .task .content .text:not(:read-only){
-  color: var(--pink);
-}
 #tasks .task .actions{
   display: flex;
   margin: 0 -0.5rem;
 }
+
 .task .actions button{
   cursor: pointer;
   margin: 0 0.5rem;

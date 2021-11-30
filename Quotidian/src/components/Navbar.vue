@@ -89,4 +89,9 @@ export default {
 .brand-logo {
   border-radius: 25px;
 }
+
+.nav-wrapper {
+    position: relative;
+    height: 100%;
+}
 </style>
