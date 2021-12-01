@@ -1,30 +1,20 @@
-<!--<template>
-  <div id="home">
-    <ul class="collection with-header">
-      <li class="collection-header"><h1>Tasks</h1></li>
-      <li v-for="user in tasks" v-bind:key="user.id" class="collection-item">
-        <div class="chip">{{user.name}}</div>
-        {{user.details}} {{user.start}} {{user.end}}
-         <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>
-      </li>
-    </ul>
-  </div>
-</template> -->
 
 <template>
   <div class="collection">
     <section class="firstsection">
       <div class="box-main">
         <div class="firstHalf">
-        <h1 class="text-big" id="web"> <p class="border">Tasks</p></h1>
+        <h1 class="text-big" id="web"> <u class = "underline">Tasks</u></h1>
         <section class="task-list">
             <div id="tasks">
-              <li v-for="user in tasks" v-bind:key="user.id" class="collection-item">
+              <div v-for="user in tasks" v-bind:key="user.id" class="collection-item">
               <div class="chip">{{user.name}}</div>
               <div class = "date"> Start Date: {{user.start}} End Date: {{user.end}} </div>
-              Description: {{user.details}}
-              <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>
-            </li>
+              <div class = "description"> Description: {{user.details}} </div>
+             <button class="action" type="button">Complete </button> 
+              <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"></router-link>
+              <!-- <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>-->
+            </div>
           <!--<h1 class="text-big" id="web">Tasks List</h1>
           <section class="task-list">
             <div id="tasks">
@@ -55,6 +45,7 @@
         </div>
       </div>
     </section> -->
+
   </div>
 </template> 
 
@@ -93,19 +84,16 @@
     }
   }
 
-window.addEventListener("load", () => {
-  const form = document.querySelector("#new-task-form");
-  const input = document.querySelector("#new-task-input");
+/*window.addEventListener("load", () => {
   const list_el = document.querySelector("#tasks");
-
 
 // Action buttons start here
     const task_actions_el = document.createElement("div");
     task_actions_el.classList.add("actions");
     
-    const task_edit_el = document.createElement("button");
-    task_edit_el.classList.add("complete");
-    task_edit_el.innerHTML= "Complete";
+    const task_complete_el = document.createElement("button");
+    task_complete_el.classList.add("complete");
+    task_complete_el.innerHTML= "Complete";
 
     task_actions_el.appendChild(task_complete_el);
 
@@ -120,6 +108,7 @@ window.addEventListener("load", () => {
       list_el.removeChild(task_el);
     });
   });
+  */
 
 </script>
 
@@ -138,10 +127,12 @@ window.addEventListener("load", () => {
 h1 {text-align: center;}
 
 .firstsection {
-  outline:4px solid black;
   background-color: #3d5afe!important;
-  height: 700px;
+  min-height: 800px;
+  height: auto;
 }
+
+
 
 .border{
  border-style:solid;
@@ -149,6 +140,10 @@ h1 {text-align: center;}
 }
 
 
+.description{
+  width: 400px;
+  word-wrap: break-word;
+}
 
 .secondsection {
   background-color: #b388ff!important;
@@ -210,7 +205,7 @@ h1 {text-align: center;}
     background-color:#b388ff!important;
     justify-content: space-between;
     line-height: 1.5rem;
-    padding: 10px 25px;
+    padding: 10px 70px 40px;
     margin: 0;
     border-bottom: 1px solid black;
     border-radius: 25px;
@@ -233,7 +228,6 @@ h1 {text-align: center;}
 
 .secondary-content {
   color: blue;
-
 }
 
 *{
@@ -246,26 +240,31 @@ h1 {text-align: center;}
   padding: 1rem;
 }
 
+
 #tasks .task .actions{
   display: flex;
   margin: 0 -0.5rem;
 }
 
-.task .actions button{
+button.action{
   cursor: pointer;
+  font-size: 1rem;
   margin: 0 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  border-radius: 15px;
+  padding: 0px 10px;
+  overflow: hidden;
+  background-color: #ffa000!important;
+  outline: none;
+  float: right;
   transition: 0.4s;
 }
-.task .actions button:hover{
-  opacity: 0.8;
+
+button.action:hover{
+  opacity: 0.7;
 }
-.task .actions button:active{
+button.action:active{
   opacity: 0.6;
+  
 }
-.task .actions .complete{
-   color: var(--darkest);
-}
+
 </style>

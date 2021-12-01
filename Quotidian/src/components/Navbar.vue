@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-wrapper indigo accent-3 darken-1">
       <div class="container">
-        <router-link to="/" class="deep-purple accent-1 brand-logo white-text"
+        <router-link to="/" class="brand-logo white-text"
           >Quotidian</router-link
         >
         <ul class="right">
@@ -89,6 +89,7 @@ export default {
 .brand-logo {
   border-radius: 25px;
 }
+
 
 .nav-wrapper {
     position: relative;

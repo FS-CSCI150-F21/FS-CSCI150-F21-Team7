@@ -249,6 +249,7 @@ export default {
             details: this.details,
             start: this.start,
             end: this.end,
+            completed: false,
             color: this.color,
             
         });
