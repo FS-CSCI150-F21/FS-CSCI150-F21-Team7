@@ -1,6 +1,6 @@
  <template>
   <nav>
-    <div class="nav-wrapper indigo accent-3 darken-1">
+    <div class="nav-wrapper">
       <div class="container">
         <router-link to="/" class="brand-logo white-text"
           >Quotidian</router-link
@@ -12,22 +12,22 @@
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/"
+            <router-link class="navy btn white-text" to="/"
               >Dashboard</router-link
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/calendar"
+            <router-link class=" navy btn white-text" to="/calendar"
               >Calendar</router-link
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/friends"
+            <router-link class="navy darken-2 btn white-text" to="/friends"
               >Friends</router-link
             >
           </li>
           <li v-if="!isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/login"
+            <router-link class="navy darken-2 btn white-text" to="/login"
               >Login</router-link
             >
           </li>
@@ -39,7 +39,7 @@
             </button>
           </li>
           <li v-if="isLoggedin">
-            <button v-on:click="logout" class="btn black">Logout</button>
+            <button v-on:click="logout" class="btn amber">Logout</button>
           </li>
         </ul>
       </div>
@@ -94,5 +94,10 @@ export default {
 .nav-wrapper {
     position: relative;
     height: 100%;
+    background-color: #051747;
 }
+
+
+
+
 </style>
