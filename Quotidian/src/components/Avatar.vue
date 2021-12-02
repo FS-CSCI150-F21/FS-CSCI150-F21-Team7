@@ -1,0 +1,63 @@
+ <template>
+  <div>
+    <ul>
+      <li><a href="">Item</a></li>
+      <li>
+        <a href="">Item</a>
+        <ul>
+          <li><a href="">inside</a></li>
+          <li><a href="">inside</a></li>
+          <li><a href="">inside</a></li>
+          <li><a href="">inside</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="">Item</a>
+        <ul>
+          <li><a href="">inside</a></li>
+          <li><a href="">inside</a></li>
+          <li><a href="">inside</a></li>
+          <li><a href="">inside</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style scoped>
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul li{
+  float: left;
+  width: 200px;
+  height: 40px;
+  background-color: darkgrey;
+  opacity: .9;
+  line-height: 40px;
+  text-align: center;
+  font-size: 20px;
+}
+
+ul li a{
+  text-decoration: none;
+  color: white;
+  display:block; 
+}
+
+ul li a:hover{
+  background-color: lightsalmon;
+}
+
+ul li ul li{
+  display: none; 
+}
+
+ul li:hover ul li{
+  display: block;
+}
+
+</style>
