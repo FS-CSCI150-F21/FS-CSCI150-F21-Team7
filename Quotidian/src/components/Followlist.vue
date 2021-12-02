@@ -11,30 +11,16 @@
                 <label class="white-text" for="email">Enter username</label>
               </div>
                 <button v-on:click="followlist"
-                class="btn btn-large btn-extended grey lighten-4 black-text">Search</button>
-                 <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-                  <div class="text">{{user.name}}</div>
+                  class="btn btn-large btn-extended grey lighten-4 black-text">Search</button>
+                   <div v-for="user in users" v-bind:key="user.id" class="collection-item">
+                    <div class="text">{{user.name}}</div>
                      <!-- <div id="options" v-if="seeoptions">-->
                       <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button>
                       <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">View Profile</button>
                  </div>
-         </div>
-    </div>
+             </div>
+          </div>
       </div>
-      
-       <!-- <li v-for="user in users" v-bind:key="user.id" class="collection-item">
-          <div class="chip">{{user.name}}</div>
-          {{user.bio}}
-        <button v-on:click="followlist">{{user.name}}</button>
-        <!--<button v-on:click="seeoptions = !seeoptions">{{user.name}}</button>
-        <div id="options" v-if="seeoptions">
-        <li><button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button></li>
-        <li><button>Block</button></li>  
-        <li><button>View Profile</button></li>
-        
-      </li>
-      </div>
-     </div>-->
 </template>
 <style>
 template{
@@ -72,24 +58,22 @@ export default {
     followlist: function(e) {
       db.collection('users').get().then((querySnapshot) =>{
         this.loading = false
-        //console.log("succes");
        //checks through database for each documented ID username.
         querySnapshot.forEach((doc) => {
 
            var curruser = this.username;
           if(this.usernames.trim() == doc.data().username.trim() ){
             console.log("SUCCESS")
-                        console.log(doc.data().username)  
+                       // console.log(doc.data().username)  
                          var userToAddID = doc.data().username;
-                         console.log(userToAddID);
+                        // console.log(userToAddID);
                 const data = {
                       'name': doc.data().username,
                       'details': doc.data().bio,
               }
                         this.users.push(data)
           }
-          else
-            console.log("none")
+        
 
         })
       
@@ -98,16 +82,39 @@ export default {
     friendrequest: function(e){
         var userID = auth.currentUser.uid;
         let currFriendsList = [];
-              db.collection('users').doc(userID).get().then((querySnapshot) =>{
+        
 
+          /*db.collection('users').doc(userID).set({
+              friendslist: firebase.firestore.FieldValue.arrayUnion(this.usernames)
+          })*/
+          db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                // sets current list of friends into array
                  currFriendsList = querySnapshot.data().friendslist
+                 //adds newly followed friend to list
+                 var checkers = false;
+                 var arrLength = currFriendsList.length;
+                 console.log(arrLength);
+                 for(var i =0;i < arrLength; i++){
+                     console.log("i am here")
+                     console.log(currFriendsList[i])
+                   if(this.usernames.trim() == currFriendsList[i].trim()){
+                     console.log("i am here")
+                     checkers = true;
+                    }
+                  }
+                 if (checkers == false){
                   currFriendsList.push(this.usernames)
                    db.collection('users').doc(userID).update({
                       friendslist: currFriendsList
-                    })
-
+                        })
+                           alert(`you followed ${this.usernames}` );
+                  }
+                  else{
+                     alert('you already follow this person!');
+                  }
               })
-               alert(`you followed ${this.usernames}`);
+                  
+                
     },
   },
   created () {
