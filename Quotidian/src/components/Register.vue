@@ -41,7 +41,7 @@
 </template>
 
 <script>
-//import db from './firebaseInit'
+import db from './firebaseInit'
 import firebase from "firebase";
 var auth = firebase.auth();
 export default {
@@ -70,7 +70,12 @@ export default {
               //avatar: " ",
               bio: " ",
               friendslist: [],
-
+              eyes:"",
+              hair: "",
+              nose: "",
+              brow: "",
+              face: "",
+              accessory: "",
             });
             alert(`Account created for ${user.email}`);
             this.$router.push("/");
