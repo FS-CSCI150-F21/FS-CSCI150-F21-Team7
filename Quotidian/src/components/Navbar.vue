@@ -22,6 +22,11 @@
             >
           </li>
           <li v-if="isLoggedin">
+            <router-link class="amber darken-2 btn white-text" to="/profile"
+              >Profile</router-link
+            >
+          </li>
+          <li v-if="isLoggedin">
             <router-link class="amber darken-2 btn white-text" to="/friends"
               >Friends</router-link
             >

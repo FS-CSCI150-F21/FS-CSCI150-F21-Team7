@@ -5,6 +5,7 @@ import ViewEmployee from "@/components/ViewEmployee";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
+import Profile from "@/components/Profile";
 import Friends from "@/components/Friends";
 import Home from "@/components/Homepage";
 import firebase from 'firebase';
@@ -25,6 +26,14 @@ let router = new Router({
       path: "/calendar",
       name: "calendar",
       component: Calendar,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/profile",
+      name: "prodfile",
+      component: Profile,
       meta: {
         requiresAuth: true
       }
