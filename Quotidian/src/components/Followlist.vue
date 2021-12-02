@@ -51,23 +51,17 @@ export default {
     return {
       users: [],
       loading: true,
-      //usernames: "",
     }
   },
   methods:{
     followlist: function(e) {
       db.collection('users').get().then((querySnapshot) =>{
         this.loading = false
+        this.users = [];
        //checks through database for each documented ID username.
         querySnapshot.forEach((doc) => {
-
-           var curruser = this.username;
           if(this.usernames.trim() == doc.data().username.trim() ){
-            console.log("SUCCESS")
-                       // console.log(doc.data().username)  
-                         var userToAddID = doc.data().username;
-                        // console.log(userToAddID);
-                const data = {
+              const data = {
                       'name': doc.data().username,
                       'details': doc.data().bio,
               }
@@ -83,10 +77,6 @@ export default {
         var userID = auth.currentUser.uid;
         let currFriendsList = [];
         
-
-          /*db.collection('users').doc(userID).set({
-              friendslist: firebase.firestore.FieldValue.arrayUnion(this.usernames)
-          })*/
           db.collection('users').doc(userID).get().then((querySnapshot) =>{
                 // sets current list of friends into array
                  currFriendsList = querySnapshot.data().friendslist
@@ -94,11 +84,9 @@ export default {
                  var checkers = false;
                  var arrLength = currFriendsList.length;
                  console.log(arrLength);
+                 //checks if user already exists in friends list
                  for(var i =0;i < arrLength; i++){
-                     console.log("i am here")
-                     console.log(currFriendsList[i])
                    if(this.usernames.trim() == currFriendsList[i].trim()){
-                     console.log("i am here")
                      checkers = true;
                     }
                   }
@@ -113,8 +101,6 @@ export default {
                      alert('you already follow this person!');
                   }
               })
-                  
-                
     },
   },
   created () {
@@ -126,7 +112,6 @@ export default {
             'id': doc.id,
             'name': doc.data().name,
             'dept': doc.data().dept,
-            
           }
           this.users.push(data)
         })
