@@ -21,13 +21,13 @@
               >Calendar</router-link
             >
           </li>
-          <li v-if="isLoggedin">
+          <!--<li v-if="isLoggedin">
             <router-link class="amber darken-2 btn white-text" to="/friends"
               >Friends</router-link
             >
-          </li>
+          </li>-->
            <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/followlist">friends</router-link>
+            <router-link class="amber darken-2 btn white-text" to="/followlist">Friends</router-link>
           </li>
           <li v-if="!isLoggedin">
             <router-link class="amber darken-2 btn white-text" to="/login"

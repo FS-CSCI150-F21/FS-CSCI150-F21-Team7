@@ -119,10 +119,10 @@ input[type="text"] {
   background: transparent;
   border: none;
 
-  &:focus,
+ /* &:focus,
   &:active {
     outline: none;
-  }
+  }*/
 }
 
 input:focus input:active {
