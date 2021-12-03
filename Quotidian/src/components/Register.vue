@@ -57,7 +57,15 @@ export default {
               //password: this.password,
               admin: false,
               username: " ",
-              avatar: " ",
+             inventory:{
+                    face: "", 
+                    eyes: "",
+                    mouth: "",
+                    nose: "",
+                    brow: "",
+                    hair: "",
+                    acc: "",
+              },
               bio: " ",
             });
             alert(`Account created for ${user.email}`);

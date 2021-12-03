@@ -27,47 +27,47 @@
 
     <div class="itemsArea" style="clear:both">
         <div class="itmems" v-if="face">
-            <button class="avatarButton" @click="test01"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/JvfJb4K/face2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/nLMVbzP/face3.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/YbXQLvz/face4.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/SKDxwJh/face5.png" class="item"></button>
+            <button v-on:click="setFaceDB('yXmkvJX/face1.png')" class="avatarButton" @click="test01"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
+            <button v-on:click="setFaceDB('JvfJb4K/face2.png')" class="avatarButton"><img src= "https://i.ibb.co/JvfJb4K/face2.png" class="item"></button>
+            <button v-on:click="setFaceDB('nLMVbzP/face3.png')" class="avatarButton"><img src= "https://i.ibb.co/nLMVbzP/face3.png" class="item"></button>
+            <button v-on:click="setFaceDB('YbXQLvz/face4.png')" class="avatarButton"><img src= "https://i.ibb.co/YbXQLvz/face4.png" class="item"></button>
+            <button v-on:click="setFaceDB('SKDxwJh/face5.png')" class="avatarButton"><img src= "https://i.ibb.co/SKDxwJh/face5.png" class="item"></button>
         </div>
         <div class="itmems" v-if="mouth">
-            <button class="avatarButton"><img src= "https://i.ibb.co/9gcDc7m/mouth1.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/YydVm1m/mouth2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/Kb6zD2k/mouth3.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/fFy4vzh/mouth4.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/sggnv4Q/mouth5.png" class="item"></button>
+            <button v-on:click="setMouthDB('9gcDc7m/mouth1.png')" class="avatarButton"><img src= "https://i.ibb.co/9gcDc7m/mouth1.png" class="item"></button>
+            <button v-on:click="setMouthDB('YydVm1m/mouth2.png')" class="avatarButton"><img src= "https://i.ibb.co/YydVm1m/mouth2.png" class="item"></button>
+            <button v-on:click="setMouthDB('Kb6zD2k/mouth3.png')" class="avatarButton"><img src= "https://i.ibb.co/Kb6zD2k/mouth3.png" class="item"></button>
+            <button v-on:click="setMouthDB('fFy4vzh/mouth4.png')" class="avatarButton"><img src= "https://i.ibb.co/fFy4vzh/mouth4.png" class="item"></button>
+            <button v-on:click="setMouthDB('sggnv4Q/mouth5.png')" class="avatarButton"><img src= "https://i.ibb.co/sggnv4Q/mouth5.png" class="item"></button>
         </div>
         <div class="itmems" v-if="eye">
-            <button class="avatarButton"><img src= "https://i.ibb.co/LJkLv0w/eye1.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/WfDLgLY/eye2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/g3BDLhq/eye3.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/GCs470k/eye4.png" class="item"></button>
+            <button v-on:click="setEyeDB('LJkLv0w/eye1.png')" class="avatarButton"><img src= "https://i.ibb.co/LJkLv0w/eye1.png" class="item"></button>
+            <button v-on:click="setEyeDB('WfDLgLY/eye2.png')" class="avatarButton"><img src= "https://i.ibb.co/WfDLgLY/eye2.png" class="item"></button>
+            <button v-on:click="setEyeDB('g3BDLhq/eye3.png')" class="avatarButton"><img src= "https://i.ibb.co/g3BDLhq/eye3.png" class="item"></button>
+            <button v-on:click="setEyeDB('GCs470k/eye4.png')" class="avatarButton"><img src= "https://i.ibb.co/GCs470k/eye4.png" class="item"></button>
         </div>
         <div class="itmems" v-if="nose">
-            <button v-on:click="setNose" class="avatarButton"><img src= "https://i.ibb.co/vwyfdZ7/nose1.png" id="nose1" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/xG60wWw/nose2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/gZXdNx7/nose3.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/Dz702QP/nose4.png" class="item"></button>
+            <button v-on:click="setNoseDB('vwyfdZ7/nose1.png')" class="avatarButton"><img src= "https://i.ibb.co/vwyfdZ7/nose1.png" class="item"></button>
+            <button v-on:click="setNoseDB('xG60wWw/nose2.png')" class="avatarButton"><img src= "https://i.ibb.co/xG60wWw/nose2.png" class="item"></button>
+            <button v-on:click="setNoseDB('gZXdNx7/nose3.png')" class="avatarButton"><img src= "https://i.ibb.co/gZXdNx7/nose3.png" class="item"></button>
+            <button v-on:click="setNoseDB('Dz702QP/nose4.png')" class="avatarButton"><img src= "https://i.ibb.co/Dz702QP/nose4.png" class="item"></button>
         </div>
         <div class="itmems" v-if="brow">
-            <button class="avatarButton"><img src= "https://i.ibb.co/McjTk9b/brow1.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/9YcwTF6/brow2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/jzvXwND/brow3.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/pRf0gkZ/brow4.png" class="item"></button>
+            <button v-on:click="setBrowDB('McjTk9b/brow1.png')" class="avatarButton"><img src= "https://i.ibb.co/McjTk9b/brow1.png" class="item"></button>
+            <button v-on:click="setBrowDB('9YcwTF6/brow2.png')" class="avatarButton"><img src= "https://i.ibb.co/9YcwTF6/brow2.png" class="item"></button>
+            <button v-on:click="setBrowDB('jzvXwND/brow3.png')" class="avatarButton"><img src= "https://i.ibb.co/jzvXwND/brow3.png" class="item"></button>
+            <button v-on:click="setBrowDB('pRf0gkZ/brow4.png')" class="avatarButton"><img src= "https://i.ibb.co/pRf0gkZ/brow4.png" class="item"></button>
         </div>
         <div class="itmems" v-if="hair">
-            <button class="avatarButton"><img src= "https://i.ibb.co/XznYfkk/hair1.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/NYxMWNp/hair2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/qJrRKvg/hair4.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/FJCZ966/hair5.png" class="item"></button>
+            <button v-on:click="setHairDB('XznYfkk/hair1.png')" class="avatarButton"><img src= "https://i.ibb.co/XznYfkk/hair1.png" class="item"></button>
+            <button v-on:click="setHairDB('NYxMWNp/hair2.png')" class="avatarButton"><img src= "https://i.ibb.co/NYxMWNp/hair2.png" class="item"></button>
+            <button v-on:click="setHairDB('qJrRKvg/hair4.png')" class="avatarButton"><img src= "https://i.ibb.co/qJrRKvg/hair4.png" class="item"></button>
+            <button v-on:click="setHairDB('FJCZ966/hair5.png')" class="avatarButton"><img src= "https://i.ibb.co/FJCZ966/hair5.png" class="item"></button>
         </div>
         <div class="itmems" v-if="accessory">
-            <button class="avatarButton"><img src= "https://i.ibb.co/TLdd03X/acc1.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/RNVc1MN/acc2.png" class="item"></button>
-            <button class="avatarButton"><img src= "https://i.ibb.co/d6C3fhn/acc3.png" class="item"></button>
+            <button v-on:click="setAccDB('TLdd03X/acc1.png')" class="avatarButton"><img src= "https://i.ibb.co/TLdd03X/acc1.png" class="item"></button>
+            <button v-on:click="setAccDB('RNVc1MN/acc2.png')" class="avatarButton"><img src= "https://i.ibb.co/RNVc1MN/acc2.png" class="item"></button>
+            <button v-on:click="setAccDB('d6C3fhn/acc3.png')" class="avatarButton"><img src= "https://i.ibb.co/d6C3fhn/acc3.png" class="item"></button>
         </div>
         
     </div>
@@ -88,8 +88,8 @@
     import db from "./firebaseInit";
     import firebase from "firebase";
     var auth= firebase.auth();
-    var userID = auth.currentUser.uid;
-    var exists = false;
+    //var userID = auth.currentUser.uid;
+    //var exists = false;
   
     export default {
         name: "avatar",
@@ -109,9 +109,91 @@
             };
         },
         methods: {
-            setNose: function() {
-                var imgsrc = document.getElementById("nose1").src 
-                console.log(imgsrc)
+           setNoseDB: function(noseID){
+                var imgsrc =  noseID
+                var userID = auth.currentUser.uid;
+                
+                db.collection('users').doc(userID).update({
+                    nose: {
+                         id: "4",
+                         source: imgsrc,
+                         layer: 25,
+                    }
+                })
+            },
+            setHairDB: function(hairID){
+                 var imgsrc =  hairID
+                var userID = auth.currentUser.uid;
+                
+                db.collection('users').doc(userID).update({
+                    hair: {
+                        id: "6",
+                         source: imgsrc,
+                         layer: 35,
+                    }
+                })
+            },
+            setAccDB: function(accID){
+                 var imgsrc =  accID
+                var userID = auth.currentUser.uid;
+                
+                db.collection('users').doc(userID).update({
+                    acc: {
+                         id: "7",
+                         source: imgsrc,
+                         layer: 40,
+                    }
+                })
+            },
+            setEyeDB: function(eyeID){
+                 var imgsrc =  eyeID
+                var userID = auth.currentUser.uid;
+                db.collection('users').doc(userID).update({
+                   inventory:{ 
+                       eye: {
+                         id: "2",
+                         source: imgsrc,
+                         layer: 15,
+                        }
+                    }
+                })
+            },
+            setBrowDB: function(browID){
+                 var imgsrc =  browID
+                var userID = auth.currentUser.uid;
+                
+                db.collection('users').doc(userID).update({
+                   brow: {
+                         id: "5",
+                         
+                         source: imgsrc,
+                         layer: 30,
+                    }
+                })
+            },
+            setFaceDB: function(faceID){
+                 var imgsrc =  faceID
+                var userID = auth.currentUser.uid;
+                
+                db.collection('users').doc(userID).update({
+                    face: {
+                         id: "1",
+                         source: imgsrc,
+                         layer: 10,
+                    }
+                })
+            },
+             setMouthDB: function(mouthID){
+                 var imgsrc =  mouthID
+                var userID = auth.currentUser.uid;
+                
+                db.collection('users').doc(userID).update({
+                    mouth: {
+                         id: "3",
+                         source: imgsrc,
+                         layer: 20,
+                    }
+                })
             },
             show: function (part) {
                 if(part=="face"){
