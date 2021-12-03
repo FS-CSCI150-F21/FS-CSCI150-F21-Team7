@@ -1,8 +1,8 @@
 <template>
     <div class="collection">
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="text">{{ user.currentUser }}</div>
-         
+        <div class="text">{{ user.currentUser }}          {{user.bio}}
+</div>
         </div>
     </div>
 </template>
@@ -27,15 +27,23 @@ export default{
             bio: ""
         }
     },
-
+   /* name: "friends",
+    data() {
+        return{
+            friends: [],
+            friendName: "",
+        }
+    },
+*/
 
     created() {
       //this.isLoggedin = true;
       var userID = auth.currentUser.uid; 
-     
+        let currFriendsList = [];
+
          db.collection('users').doc(userID).get().then((querySnapshot) =>{
                // this.loading = false;
-               //console.log(doc.data().username)
+              
                const data = {
                     'currentUser': querySnapshot.data().username,
                     'bio': querySnapshot.data().bio
@@ -43,7 +51,17 @@ export default{
                 this.users.push(data)
         })
        },
-    
+    /*friendsList(){
+             let currFriendsList = [];
+              db.collection('users').doc(userID).get().then((querySnapshot) =>{
+               // this.loading = false;
+               currFriendsList = querySnapshot.data().friendslist
+               //console.log(doc.data().username)
+               arrLength = currFriendsList.length;
+               
+        })
+    },*/
+      
 };
 </script>
 
