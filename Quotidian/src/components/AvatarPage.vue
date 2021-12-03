@@ -47,7 +47,7 @@
             <button v-on:click="setEyeDB('GCs470k/eye4.png')" class="avatarButton"><img src= "https://i.ibb.co/GCs470k/eye4.png" class="item"></button>
         </div>
         <div class="itmems" v-if="nose">
-            <button v-on:click="setNoseDB('vwyfdZ7/nose1.png')" class="avatarButton"><img src= "https://i.ibb.co/vwyfdZ7/nose1.png" class="item"></button>
+            <button v-on:click="setNoseDB('vwyfdZ7/nose1.png');setUserAvatar()" class="avatarButton"><img src= "https://i.ibb.co/vwyfdZ7/nose1.png" class="item"></button>
             <button v-on:click="setNoseDB('xG60wWw/nose2.png')" class="avatarButton"><img src= "https://i.ibb.co/xG60wWw/nose2.png" class="item"></button>
             <button v-on:click="setNoseDB('gZXdNx7/nose3.png')" class="avatarButton"><img src= "https://i.ibb.co/gZXdNx7/nose3.png" class="item"></button>
             <button v-on:click="setNoseDB('Dz702QP/nose4.png')" class="avatarButton"><img src= "https://i.ibb.co/Dz702QP/nose4.png" class="item"></button>
@@ -106,52 +106,22 @@
                 brow: false,
                 hair: false,
                 accessory: false,
-            };
+                userAvatar: []
+            }
         },
-        /*
+      /*  
        name: "userAvatar",
-        data() {
+        data: function () {
            return {
-                nose: [
-                        { id: ""},
-                         {source: ""},
-                         {layer: 25},
-                ],
-                 hair: [
-                        { id: ""},
-                         {source: ""},
-                         {layer: 35},
-                 ],
-                acc: [
-                        { id: ""},
-                         {source: ""},
-                         {layer: 40},
-                ],
-                eye: [
-                         { id: ""},
-                         {source: ""},
-                         {layer: 15},
-                        ],
-                 brow: [
-                         { id: ""},
-                         {source: ""},
-                         {layer: 30},
-                 ],
-                 face: [
-                         { id: ""},
-                         {source: ""},
-                         {layer: 10},
-                     ],
-                      mouth: [
-                         { id: ""},
-                         {source: ""},
-                         {layer: 20},
-                        ]
-                    } 
-            },*/
-       
-        
+               id: 1,
+               source: "",
+               layer: 10,
+               userAvatar: []
+            }
+        },
+        */
         methods: {
+            
            setNoseDB: function(noseID){
                 var imgsrc =  noseID
                 var userID = auth.currentUser.uid;
@@ -241,6 +211,20 @@
                          layer: 20,
                         }
                     
+                })
+            },
+            setUserAvatar: function(){
+                var userID = auth.currentUser.uid;
+
+                db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                    
+                    const data = {
+                        id: querySnapshot.data().nose.id,
+                        source: querySnapshot.data().nose.source,
+                        layer: querySnapshot.data().nose.layer,
+                    }
+                    console.log(data.layer)
+                    this.userAvatar.push(data)
                 })
             },
             show: function (part) {
