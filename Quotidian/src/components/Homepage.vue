@@ -52,13 +52,12 @@
       }
     },
     methods: {
-       completeTask(taskid){
+      async completeTask(taskid){
          var userID = auth.currentUser.uid;
-
-          db.collection(userID).doc(taskid).update({
-            completed: true,
+          await db.collection(userID).doc(taskid).update({
+            completed: true,    
           })
-          window.location.reload()
+          location.reload(false)
         }
     },
      created () {
