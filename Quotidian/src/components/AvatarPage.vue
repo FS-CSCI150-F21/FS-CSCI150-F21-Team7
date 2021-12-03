@@ -27,7 +27,7 @@
 
     <div class="itemsArea" style="clear:both">
         <div class="itmems" v-if="face">
-            <button v-on:click="setFaceDB('yXmkvJX/face1.png')" class="avatarButton" @click="test01"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
+            <button v-on:click="setFaceDB('yXmkvJX/face1.png')" class="avatarButton"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
             <button v-on:click="setFaceDB('JvfJb4K/face2.png')" class="avatarButton"><img src= "https://i.ibb.co/JvfJb4K/face2.png" class="item"></button>
             <button v-on:click="setFaceDB('nLMVbzP/face3.png')" class="avatarButton"><img src= "https://i.ibb.co/nLMVbzP/face3.png" class="item"></button>
             <button v-on:click="setFaceDB('YbXQLvz/face4.png')" class="avatarButton"><img src= "https://i.ibb.co/YbXQLvz/face4.png" class="item"></button>
@@ -108,29 +108,75 @@
                 accessory: false,
             };
         },
+        /*
+       name: "userAvatar",
+        data() {
+           return {
+                nose: [
+                        { id: ""},
+                         {source: ""},
+                         {layer: 25},
+                ],
+                 hair: [
+                        { id: ""},
+                         {source: ""},
+                         {layer: 35},
+                 ],
+                acc: [
+                        { id: ""},
+                         {source: ""},
+                         {layer: 40},
+                ],
+                eye: [
+                         { id: ""},
+                         {source: ""},
+                         {layer: 15},
+                        ],
+                 brow: [
+                         { id: ""},
+                         {source: ""},
+                         {layer: 30},
+                 ],
+                 face: [
+                         { id: ""},
+                         {source: ""},
+                         {layer: 10},
+                     ],
+                      mouth: [
+                         { id: ""},
+                         {source: ""},
+                         {layer: 20},
+                        ]
+                    } 
+            },*/
+       
+        
         methods: {
            setNoseDB: function(noseID){
                 var imgsrc =  noseID
                 var userID = auth.currentUser.uid;
-                
-                db.collection('users').doc(userID).update({
+        
+             db.collection('users').doc(userID).update({
+            
                     nose: {
                          id: "4",
                          source: imgsrc,
                          layer: 25,
-                    }
+                        }
+                    
                 })
             },
             setHairDB: function(hairID){
                  var imgsrc =  hairID
                 var userID = auth.currentUser.uid;
-                
                 db.collection('users').doc(userID).update({
+                     
                     hair: {
                         id: "6",
                          source: imgsrc,
                          layer: 35,
-                    }
+                        }
+                    
                 })
             },
             setAccDB: function(accID){
@@ -142,20 +188,20 @@
                          id: "7",
                          source: imgsrc,
                          layer: 40,
-                    }
+                        }
+                    
                 })
             },
             setEyeDB: function(eyeID){
                  var imgsrc =  eyeID
                 var userID = auth.currentUser.uid;
                 db.collection('users').doc(userID).update({
-                   inventory:{ 
                        eye: {
                          id: "2",
                          source: imgsrc,
                          layer: 15,
                         }
-                    }
+                    
                 })
             },
             setBrowDB: function(browID){
@@ -165,10 +211,10 @@
                 db.collection('users').doc(userID).update({
                    brow: {
                          id: "5",
-                         
                          source: imgsrc,
                          layer: 30,
-                    }
+                        }
+                     
                 })
             },
             setFaceDB: function(faceID){
@@ -176,11 +222,12 @@
                 var userID = auth.currentUser.uid;
                 
                 db.collection('users').doc(userID).update({
-                    face: {
+                         face: {
                          id: "1",
                          source: imgsrc,
                          layer: 10,
-                    }
+                     }
+                    
                 })
             },
              setMouthDB: function(mouthID){
@@ -192,7 +239,8 @@
                          id: "3",
                          source: imgsrc,
                          layer: 20,
-                    }
+                        }
+                    
                 })
             },
             show: function (part) {
