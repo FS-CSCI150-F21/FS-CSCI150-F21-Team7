@@ -99,6 +99,14 @@
   --darkblue: #051747
 }
 h1 {text-align: center;}
+
+.collection{
+  margin-top: 1rem;
+  border: 5px solid #26a69a;
+  border-radius: 25px;
+
+}
+
 .firstsection {
   background-color: #051747 ;
   min-height: 800px;

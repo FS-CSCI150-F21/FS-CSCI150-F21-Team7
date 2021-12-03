@@ -1,14 +1,14 @@
 <template>
     <div class="collection">
-        <div>A Picture</div>
+        <div class = "picture">A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="text">{{ user.currentUser }}</div>
+        <div class="curr"> User Name: {{ user.currentUser }}</div>
         </div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="text">{{ user.bio }}</div>
+        <div class="bio">Bio: {{ user.bio }}</div>
         </div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="text">{{ user.flist }}</div>
+        <div class="flist"> Freinds List: {{ user.flist }}</div>
         </div>
     </div>
 </template>
@@ -73,6 +73,50 @@ export default{
 </script>
 
 <style scoped>
+.collection{
+    margin: 1rem 0 1rem 0;
+    border: 5px solid #26a69a;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    background-color:#051747;
+    justify-content: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+
+ 
+}
+
+.collection-item {
+   background-color:#535F80;
+    justify-content: space-between;
+    line-height: 1.5rem;
+    padding: 10px 70px 40px;
+    margin: 0;
+    border-bottom: 1px solid black;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+    color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.picture{
+    text-align: center;
+}
+
+.flist {
+    justify-content: space-between;
+}
+
+
+
+
+
 .Fullpage{
     background-color: rgb(0, 0, 196);
     border: black 3px solid;
