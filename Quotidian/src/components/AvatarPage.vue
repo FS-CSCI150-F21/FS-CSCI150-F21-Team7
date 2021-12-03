@@ -47,7 +47,7 @@
             <button class="avatarButton"><img src= "https://i.ibb.co/GCs470k/eye4.png" class="item"></button>
         </div>
         <div class="itmems" v-if="nose">
-            <button class="avatarButton"><img src= "https://i.ibb.co/vwyfdZ7/nose1.png" class="item"></button>
+            <button v-on:click="setNose" class="avatarButton"><img src= "https://i.ibb.co/vwyfdZ7/nose1.png" id="nose1" class="item"></button>
             <button class="avatarButton"><img src= "https://i.ibb.co/xG60wWw/nose2.png" class="item"></button>
             <button class="avatarButton"><img src= "https://i.ibb.co/gZXdNx7/nose3.png" class="item"></button>
             <button class="avatarButton"><img src= "https://i.ibb.co/Dz702QP/nose4.png" class="item"></button>
@@ -85,14 +85,12 @@
 <script>
     import shop from "./shop.json";
     import json from "./dData.json";
-    import db from "./firebaseInit.js";
+    import db from "./firebaseInit";
     import firebase from "firebase";
-
     var auth= firebase.auth();
     var userID = auth.currentUser.uid;
     var exists = false;
   
-
     export default {
         name: "avatar",
         data: function() {
@@ -111,11 +109,9 @@
             };
         },
         methods: {
-            test01(){
-                console.log(userID);
-            },
-            sayhi(){
-                alert("hello");
+            setNose: function() {
+                var imgsrc = document.getElementById("nose1").src 
+                console.log(imgsrc)
             },
             show: function (part) {
                 if(part=="face"){
@@ -146,20 +142,16 @@
                     this.accessory=true;
                     this.face = this.eye = this.nose = this.brow = this.hair = this.mouth = false;
                 }
-
             },
         },
     }
-
 </script>
 
 <style scoped>
-
 .item{
     border: 4px solid rgb(0, 0, 0);
     width:250px;
 }
-
 .avatarBackground{
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     border-radius: 9%;
@@ -173,7 +165,6 @@
     width: 400px;
     background-color: #316ff5;
 }
-
 .itemsArea{
     position: relative;
     background-color: #698ad8;
@@ -181,9 +172,7 @@
     border-radius: 6px;
     border: 0px solid rgb(0, 0, 0);
 }
-
 .button{
-
   padding: 9px 20px;
   font-size: 20px;
   cursor: pointer;
@@ -196,7 +185,6 @@
   float: left;
   border: 4px solid rgb(0, 0, 0);
 }
-
 .avatarButton{
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;  
   padding: 9px 20px;
@@ -211,23 +199,18 @@
   float: left;
   border: 4px solid rgb(0, 0, 0);
 }
-
 .avatarButton:hover{
     background-color: #6f94ec;
 }
-
 .avatarButton:active{
     background-color: #698ad8;
     transform: scaleY(1.02) scaleX(1.02);
 }
-
 .button:hover{
     background-color: #6f94ec;
 }
-
 .button:active{
     background-color: #698ad8;
     transform: translateY(4px);
 }
-
 </style>
