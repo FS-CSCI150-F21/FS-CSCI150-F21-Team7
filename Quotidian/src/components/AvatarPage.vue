@@ -27,7 +27,7 @@
 
     <div class="itemsArea" style="clear:both">
         <div class="itmems" v-if="face">
-            <button class="avatarButton"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
+            <button class="avatarButton" @click="test01"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
             <button class="avatarButton"><img src= "https://i.ibb.co/JvfJb4K/face2.png" class="item"></button>
             <button class="avatarButton"><img src= "https://i.ibb.co/nLMVbzP/face3.png" class="item"></button>
             <button class="avatarButton"><img src= "https://i.ibb.co/YbXQLvz/face4.png" class="item"></button>
@@ -83,8 +83,15 @@
 </template>
 
 <script>
-    import shop from "./shop.json"
-    import json from "./dData.json"
+    import shop from "./shop.json";
+    import json from "./dData.json";
+    import db from "./firebaseInit.js";
+    import firebase from "firebase";
+
+    var auth= firebase.auth();
+    var userID = auth.currentUser.uid;
+    var exists = false;
+  
 
     export default {
         name: "avatar",
@@ -104,6 +111,9 @@
             };
         },
         methods: {
+            test01(){
+                console.log(userID);
+            },
             sayhi(){
                 alert("hello");
             },
@@ -151,6 +161,7 @@
 }
 
 .avatarBackground{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     border-radius: 9%;
     position: relative;
     display: block;
@@ -172,6 +183,7 @@
 }
 
 .button{
+
   padding: 9px 20px;
   font-size: 20px;
   cursor: pointer;
@@ -186,6 +198,7 @@
 }
 
 .avatarButton{
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;  
   padding: 9px 20px;
   font-size: 20px;
   cursor: pointer;
@@ -200,23 +213,21 @@
 }
 
 .avatarButton:hover{
-    background-color: #577dd6;
+    background-color: #6f94ec;
 }
 
 .avatarButton:active{
     background-color: #698ad8;
     transform: scaleY(1.02) scaleX(1.02);
-    box-shadow: 0 9px rgb(0, 0, 0);
 }
 
 .button:hover{
-    background-color: #577dd6;
+    background-color: #6f94ec;
 }
 
 .button:active{
     background-color: #698ad8;
     transform: translateY(4px);
-    box-shadow: 0 9px rgb(0, 0, 0);
 }
 
 </style>
