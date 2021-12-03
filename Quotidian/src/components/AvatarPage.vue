@@ -1,8 +1,7 @@
 <template>
   <div id="avatarPage">
 
-    <img src="https://freerangestock.com/sample/113540/blue-background.jpg" class="avatarBackground">
-
+<div class="avatarBackground" style="position:relative">
     <div v-for="data in Json" :key="data.id" >
         <img :src="`https://i.ibb.co/${data.source}`"
         :id="`${data.name}`"  
@@ -11,12 +10,13 @@
                 z-index: ${data.layer};
                 position:absolute; 
                 height: 500px;
-                top: 5em;
-                left: 38%;
+                top: 0em;
+                left: -5%;
                 clip: rect(29px, 400px, 450px, 0);
                 `"
         >
     </div>
+</div>
     <br>
     
     <div>
@@ -160,7 +160,7 @@
     padding: 0px;
     height: 370px;
     width: 400px;
-    
+    background-color: #316ff5;
 }
 
 .itemsArea{
