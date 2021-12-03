@@ -1,8 +1,14 @@
 <template>
     <div class="collection">
+        <div>A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="text">{{ user.currentUser }}          {{user.bio}}
-</div>
+        <div class="text">{{ user.currentUser }}</div>
+        </div>
+        <div v-for="user in users" v-bind:key="user.id" class="collection-item">
+        <div class="text">{{ user.bio }}</div>
+        </div>
+        <div v-for="user in users" v-bind:key="user.id" class="collection-item">
+        <div class="text">{{ user.flist }}</div>
         </div>
     </div>
 </template>
@@ -46,7 +52,8 @@ export default{
               
                const data = {
                     'currentUser': querySnapshot.data().username,
-                    'bio': querySnapshot.data().bio
+                    'bio': querySnapshot.data().bio,
+                    'flist': querySnapshot.data().friendslist
                }
                 this.users.push(data)
         })
