@@ -15,6 +15,8 @@
                 clip: rect(29px, 400px, 450px, 0);
                 `"
         >
+        <div v-for="data in avatar" :key="data.id">
+        <img :src="`https://i.ibb.co/${data.}
     </div>
 </div>
     <br>
@@ -219,9 +221,9 @@
                 db.collection('users').doc(userID).get().then((querySnapshot) =>{
                     
                     const data = {
-                        id: querySnapshot.data().nose.id,
-                        source: querySnapshot.data().nose.source,
-                        layer: querySnapshot.data().nose.layer,
+                        'id': querySnapshot.data().nose.id,
+                        'source': querySnapshot.data().nose.source,
+                        'layer': querySnapshot.data().nose.layer,
                     }
                     console.log(data.layer)
                     this.userAvatar.push(data)
