@@ -10,26 +10,10 @@
               <div class="chip">{{user.name}}</div>
               <div class = "date"> Start Date: {{user.start}} End Date: {{user.end}} </div>
               <div class = "description"> Description: {{user.details}} </div>
-             <button class="action" type="button">Complete </button> 
+             <button v-on:click= "completeTask(user.taskID)" class="action" type="button">Complete </button> 
               <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"></router-link>
               <!-- <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>-->
             </div>
-          <!--<h1 class="text-big" id="web">Tasks List</h1>
-          <section class="task-list">
-            <div id="tasks">
-              \\ <div class="task">
-                <div class="content">
-                  <input
-                    type="text"
-                    class="text"
-                    value="My shiny task"
-                    readonly
-                  />
-                </div>
-                <div class="actions">
-                  <button class="complete">Complete</button>
-                </div>
-              </div> -->
             </div>
           </section> 
         </div>
@@ -51,7 +35,7 @@
 <script>
   import db from './firebaseInit'
   import firebase from "firebase";
-    //var db = firebase.firestore();
+  var auth = firebase.auth()
   export default {
     name: 'home',
     data () {
@@ -60,47 +44,47 @@
         loading: true
       }
     },
+    name: 'completeTask',
+    data () {
+      return{
+          tasks: [],
+          loading: true
+      }
+    },
+    methods: {
+       completeTask(taskid){
+         var userID = auth.currentUser.uid;
+
+          db.collection(userID).doc(taskid).update({
+            completed: true,
+          })
+          window.location.reload()
+        }
+    },
      created () {
-     //   var db = firebase.firestore();
       var auth = firebase.auth();
       var userID = auth.currentUser.uid;
+      
+      //checks for each users tasks, outputs them if they are not complete
       db.collection(userID).get().then((querySnapshot) => {
         this.loading = false
-        //console.log("data exists")
         querySnapshot.forEach((doc) => {
           const data = {
             'name': doc.data().name,
             'details': doc.data().details,
-           //'employee_id': doc.data().employee_id,
             'start': doc.data().start,
             'end': doc.data().end,
-            //'dept': doc.data().dept,
-            //'position': doc.data().position
+            'taskID': doc.id,
           }
-          this.tasks.push(data)
+          //console.log(doc.id)
+          if(doc.data().completed == false){
+             this.tasks.push(data)
+          }
         })
       })
-    }
+    },
+
   }
-/*window.addEventListener("load", () => {
-  const list_el = document.querySelector("#tasks");
-// Action buttons start here
-    const task_actions_el = document.createElement("div");
-    task_actions_el.classList.add("actions");
-    
-    const task_complete_el = document.createElement("button");
-    task_complete_el.classList.add("complete");
-    task_complete_el.innerHTML= "Complete";
-    task_actions_el.appendChild(task_complete_el);
-    task_el.appendChild(task_actions_el);
-    list_el.appendChild(task_el);
-    input.value = "";
-//Configuring the clickable buttons
-    task_complete_el.addEventListener("click", () =>{
-      list_el.removeChild(task_el);
-    });
-  });
-  */
 </script>
 
  <style scoped>
@@ -113,10 +97,11 @@
   --light: #eee;
   --pink: #ec4a99;
   --purple: #8b5cf6;
+  --darkblue: #051747
 }
 h1 {text-align: center;}
 .firstsection {
-  background-color: #3d5afe!important;
+  background-color: #051747 ;
   min-height: 800px;
   height: auto;
 }
@@ -174,7 +159,7 @@ h1 {text-align: center;}
   text-align: center;
 }
 .collection-item {
-    background-color:#b388ff!important;
+    background-color:#535F80;
     justify-content: space-between;
     line-height: 1.5rem;
     padding: 10px 70px 40px;
@@ -187,7 +172,7 @@ h1 {text-align: center;}
     height: 32px;
     font-size: 15px;
     font-weight: 600;
-    color: #3d5afe!important;
+    color: #081F62;
     line-height: 32px;
     padding: 0 12px;
     border-radius: 16px;
@@ -218,7 +203,7 @@ button.action{
   border-radius: 15px;
   padding: 0px 10px;
   overflow: hidden;
-  background-color: #ffa000!important;
+  background-color: #26a69a;
   outline: none;
   float: right;
   transition: 0.4s;

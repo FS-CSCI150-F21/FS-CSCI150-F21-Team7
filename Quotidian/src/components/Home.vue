@@ -36,12 +36,9 @@
           const data = {
             'name': doc.data().name,
             'details': doc.data().details,
-           //'employee_id': doc.data().employee_id,
             'start': doc.data().start,
             'end': doc.data().end,
-            //'dept': doc.data().dept,
-            //'position': doc.data().position
-          }
+           }
           this.tasks.push(data)
         })
       })

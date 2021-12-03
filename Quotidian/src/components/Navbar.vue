@@ -21,9 +21,9 @@
               >Calendar</router-link
             >
           </li>
-          <!--<li v-if="isLoggedin">
+         <!-- <li v-if="isLoggedin">
             <router-link class="amber darken-2 btn white-text" to="/friends"
-              >Friends</router-link
+              >Profile</router-link
             >
           </li>-->
            <li v-if="isLoggedin">
@@ -53,21 +53,31 @@
 
 <script>
 import firebase from "firebase";
-
+import db from './firebaseInit'
+var auth = firebase.auth()
 export default {
   name: "navbar",
 
   data() {
     return {
       isLoggedin: false,
-      currentUser: false,
+      currentUser: "",
     };
   },
 
   created() {
     if (firebase.auth().currentUser) {
+      var userID = auth.currentUser.uid
       this.isLoggedin = true;
-      this.currentUser = firebase.auth().currentUser.email;
+      db.collection('users').doc(userID).get().then((querySnapshot) =>{
+       
+          
+            this.currentUser = querySnapshot.data().username
+          
+
+         
+      })
+       
     }
   },
 

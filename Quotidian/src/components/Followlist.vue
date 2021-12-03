@@ -1,69 +1,30 @@
 <template>
-    <div id="profile" class="collection">
-    
-    <div class="search">
+    <div id="profile" class="collection with-header">
+    <div class="profview">
+  
+    </div>
+    <div class="search blue">
           <div class="input-field">
                 <div class="input-field">
                 <i class="material-icons prefix"></i>
                 <input type="text" id="usernames" v-model="usernames" />
-                <label class="black-text" for="email">Enter username</label>
+                <label class="white-text" for="email">Enter username</label>
+          </div>
                 <button v-on:click="followlist"
-                  class="btn btn-small btn-extended grey lighten-4 black-text right">Search</button>
+                  class="btn btn-large btn-extended grey lighten-4 black-text">Search</button>
                    <div v-for="user in users" v-bind:key="user.id" class="collection-item">
                     <div class="text">{{user.name}}</div>
                      <!-- <div id="options" v-if="seeoptions">-->
-                      <button v-on:click="friendrequest" class ="btn btn-small btn-extended grey lighten-4 black-text right">Follow</button>
-                      <button v-on:click="friendrequest" class ="btn btn-small btn-extended grey lighten-4 black-text right">View Profile</button>
-                 </div>
+                      <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button>
+                      <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">View Profile</button>
                  </div>
              </div>
           </div>
-      <div class="profview">
-      <div class="pfp">A pic</div>
-      <div class="desp">A Bio</div>
-      </div>
       </div>
 </template>
-
-<style scoped>
-.collection{
-  position: absolute;
-  width: 1200px;
-  height: 800px;
-}
-.profview{
-  position: absolute;
-  float: left;
-  width: 600px;
-  height: 1200px;
-  left: 600px;
-  background-color: cornflowerblue;
-}
-.pfp{
-  position: relative;
-  border:black 3px solid;
-  width: 250px;
-  height: 250px;
-  margin-top: 75px;
-  margin-left: 175px;
-  margin-right: 175px;
-  /*margin-bottom: 50px;*/
-}
-.desp{
-  position: relative;
-  border:black 3px solid;
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  margin-top: 75px;
-  margin-left: 175px;
-  margin-right: 175px;
-}
-.search{
-  position: relative;
-  float: left;
-  width: 600px;
-  background-color: darkturquoise;
+<style>
+template{
+  background-color: blueviolet
 }
 </style>
 <script>
@@ -83,7 +44,6 @@ export default {
       usernames: "",
       content: 'Info of User',
       content2: 'A search bar',
-      seeoptions: false,
     }
   },
   name: "friendrequest",
@@ -107,10 +67,7 @@ export default {
               }
                         this.users.push(data)
           }
-        
-
         })
-      
       })
     },
     friendrequest: function(e){
@@ -142,9 +99,6 @@ export default {
                   }
               })
     },
-    options(){
-        this.seeoptions=!this.seeoptions
-    }
   },
   created () {
    
