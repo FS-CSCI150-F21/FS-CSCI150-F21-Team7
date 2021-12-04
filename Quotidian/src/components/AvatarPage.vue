@@ -2,7 +2,7 @@
   <div id="avatarPage">
 
 <div class="avatarBackground" style="position:relative">
-   <!-- <div v-for="data in Json" :key="data.id" >
+    <div v-for="data in userAvatar" :key="data.id" >
         <img :src="`https://i.ibb.co/${data.source}`"
         :id="`${data.name}`"  
             :style= 
@@ -14,20 +14,8 @@
                 left: -5%;
                 clip: rect(29px, 400px, 450px, 0);
                 `"
-        >-->
-        <div v-for="user in userAvatar" :key="user.userAvatar.id">
-            
-        <img :src="`https://i.ibb.co/${data.avatar.source}`"
-        :style=
-         "`
-                z-index: ${data.avatar.layer};
-                position:absolute; 
-                height: 500px;
-                top: 0em;
-                left: -5%;
-                clip: rect(29px, 400px, 450px, 0);
-                `"
         >
+        
       
 
     </div>
@@ -98,10 +86,12 @@
 </template>
 
 <script>
+   
     import shop from "./shop.json";
     import json from "./dData.json";
     import db from "./firebaseInit";
     import firebase from "firebase";
+     //setUserAvatar()
     var auth= firebase.auth();
     //var userID = auth.currentUser.uid;
     //var exists = false;
@@ -122,6 +112,7 @@
                 hair: false,
                 accessory: false,
                 userAvatar: []
+    
             }
         },
       /*  
@@ -232,14 +223,18 @@
                 var userID = auth.currentUser.uid;
 
                 db.collection('users').doc(userID).get().then((querySnapshot) =>{
-                    
-                    const data = {
-                        'id': querySnapshot.data().nose.id,
-                        'source': querySnapshot.data().nose.source,
-                        'layer': querySnapshot.data().nose.layer,
+                    var currAvatar= [];
+                   // console.log(querySnapshot.data().inventory)
+                    currAvatar = querySnapshot.data().inventory
+                   // this.userAvatar.push(currAvatar);
+                    for(let i =0; i < currAvatar.length; i++){
+                       this.userAvatar[i] = currAvatar[i]
                     }
-                    console.log(data.layer)
-                    this.userAvatar.push(data)
+                   
+                    console.log(this.userAvatar)
+                    console.log(this.userAvatar[0].layer)
+                    console.log(this.userAvatar[0].source)
+                   // this.userAvatar.push(data)
                    //  location.reload(false)
 
                 })
