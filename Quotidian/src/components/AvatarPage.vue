@@ -29,6 +29,12 @@
     </div>
 
     <div class="itemsArea" style="clear:both">
+      <!--   <a v-for="item in Shop" :key="item.name">
+            <div class="itmems" v-if="item.name">
+            <button v-on:click="setNoseDB(item.source,((item.id)-1))" class="avatarButton"><img :src="`https://i.ibb.co/${item.source}`"></button>
+            </div>
+         </a>   
+    </div> -->
         <div class="itmems" v-if="face">
             <button v-on:click="setNoseDB('yXmkvJX/face1.png',0)" class="avatarButton"><img src= "https://i.ibb.co/yXmkvJX/face1.png" class="item"></button>
             <button v-on:click="setNoseDB('JvfJb4K/face2.png',0)" class="avatarButton"><img src= "https://i.ibb.co/JvfJb4K/face2.png" class="item"></button>
@@ -72,7 +78,7 @@
             <button v-on:click="setNoseDB('RNVc1MN/acc2.png',6)" class="avatarButton"><img src= "https://i.ibb.co/RNVc1MN/acc2.png" class="item"></button>
             <button v-on:click="setNoseDB('d6C3fhn/acc3.png',6)" class="avatarButton"><img src= "https://i.ibb.co/d6C3fhn/acc3.png" class="item"></button>
         </div>
-    </div>
+    </div>  
   </div>
 
 </template>
@@ -83,7 +89,6 @@
     import json from "./dData.json";
     import db from "./firebaseInit";
     import firebase from "firebase";
-    forceUpdate()
     var auth= firebase.auth();
   
   
@@ -126,7 +131,6 @@
                  db.collection('users').doc(userID).get().then((querySnapshot) =>{
                    var currAva = [];
                     currAva = querySnapshot.data().inventory
-                //
                    currAva[index].source = imgsrc
                    db.collection('users').doc(userID).update({
                        //updates the inventory in the database with newly selected item
@@ -137,15 +141,11 @@
                })
              
             },
-           
             setUserAvatar: function(){
                 var userID = auth.currentUser.uid;
-
                 db.collection('users').doc(userID).get().then((querySnapshot) =>{
                   //allows to redraw at each function call, keeping it updated.
-                  this.$forceUpdate()
                     //creates snapshot at usersID
-
                     var currAvatar= [];
                     var ava = [];
                     ava = this.Json
@@ -153,6 +153,8 @@
                     for(let i =0; i < currAvatar.length; i++){
                        this.userAvatar[i] = currAvatar[i]
                     } 
+                                      this.$forceUpdate()
+
                 })
             },
             show: function (part) {
