@@ -2,7 +2,7 @@
   <div id="avatarPage">
 
 <div class="avatarBackground" style="position:relative">
-    <div v-for="data in Json" :key="data.id" >
+   <!-- <div v-for="data in Json" :key="data.id" >
         <img :src="`https://i.ibb.co/${data.source}`"
         :id="`${data.name}`"  
             :style= 
@@ -14,9 +14,22 @@
                 left: -5%;
                 clip: rect(29px, 400px, 450px, 0);
                 `"
+        >-->
+        <div v-for="user in userAvatar" :key="user.userAvatar.id">
+            
+        <img :src="`https://i.ibb.co/${data.avatar.source}`"
+        :style=
+         "`
+                z-index: ${data.avatar.layer};
+                position:absolute; 
+                height: 500px;
+                top: 0em;
+                left: -5%;
+                clip: rect(29px, 400px, 450px, 0);
+                `"
         >
-        <div v-for="data in avatar" :key="data.id">
-        <img :src="`https://i.ibb.co/${data.}
+      
+
     </div>
 </div>
     <br>
@@ -227,6 +240,8 @@
                     }
                     console.log(data.layer)
                     this.userAvatar.push(data)
+                   //  location.reload(false)
+
                 })
             },
             show: function (part) {
