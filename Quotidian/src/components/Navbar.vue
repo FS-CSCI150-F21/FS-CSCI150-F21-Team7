@@ -1,4 +1,4 @@
- <template>
+<template>
   <nav>
     <div class="nav-wrapper">
       <div class="container">
@@ -19,6 +19,11 @@
           <li v-if="isLoggedin">
             <router-link class="navy darken-2 btn white-text" to="/calendar"
               >Calendar</router-link
+            >
+          </li>
+          <li v-if="isLoggedin">
+            <router-link class="amber darken-2 btn white-text" to="/AvatarPage"
+              >Avatar</router-link
             >
           </li>
          <li v-if="isLoggedin">
@@ -57,14 +62,12 @@ import db from './firebaseInit'
 var auth = firebase.auth()
 export default {
   name: "navbar",
-
   data() {
     return {
       isLoggedin: false,
       currentUser: "",
     };
   },
-
   created() {
     if (firebase.auth().currentUser) {
       var userID = auth.currentUser.uid
@@ -74,13 +77,11 @@ export default {
           
             this.currentUser = querySnapshot.data().username
           
-
          
       })
        
     }
   },
-
   methods: {
     logout: function () {
       firebase
@@ -98,11 +99,9 @@ export default {
 .email {
   padding-right: 10px;
 }
-
 .brand-logo {
   border-radius: 25px;
 }
-
 .nav-wrapper {
     position: relative;
     height: 120%;

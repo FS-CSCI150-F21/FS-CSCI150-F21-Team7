@@ -8,6 +8,7 @@ import Calendar from "@/components/Calendar";
 import Followlist from "@/components/Followlist";
 import Profile from "@/components/Profile";
 import Homepage from "@/components/Homepage";
+import AvatarPage from "@/components/AvatarPage";
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -26,6 +27,14 @@ let router = new Router({
       path: "/calendar",
       name: "calendar",
       component: Calendar,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/AvatarPage",
+      name: "AvatarPage",
+      component: AvatarPage,
       meta: {
         requiresAuth: true
       }
