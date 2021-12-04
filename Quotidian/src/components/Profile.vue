@@ -41,12 +41,10 @@ export default{
         }
     },
 */
-
     created() {
       //this.isLoggedin = true;
       var userID = auth.currentUser.uid; 
         let currFriendsList = [];
-
          db.collection('users').doc(userID).get().then((querySnapshot) =>{
                // this.loading = false;
               
@@ -85,10 +83,8 @@ export default{
     margin-left: auto;
     margin-right: auto;
     color: white;
-
  
 }
-
 .collection-item {
    background-color:#535F80;
     justify-content: space-between;
@@ -102,21 +98,13 @@ export default{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-
 }
-
 .picture{
     text-align: center;
 }
-
 .flist {
     justify-content: space-between;
 }
-
-
-
-
-
 .Fullpage{
     background-color: rgb(0, 0, 196);
     border: black 3px solid;
