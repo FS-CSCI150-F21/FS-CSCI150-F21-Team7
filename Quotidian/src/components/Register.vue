@@ -16,6 +16,16 @@
                 <input type="password" id="password" v-model="password" />
                 <label class="white-text" for="password">Password</label>
               </div>
+              <div class="input-field">
+                <i class="material-icons white-text prefix">email</i>
+                <input type="text" id="username" v-model="username" />
+                <label class="white-text" for="username">Username</label>
+              </div>
+               <div class="input-field">
+                <i class="material-icons white-text prefix">email</i>
+                <input type="text" id="bio" v-model="bio" />
+                <label class="white-text" for="bio">Bio</label>
+              </div>
               <button
                 v-on:click="register"
                 class="btn btn-large btn-extended grey lighten-4 black-text"
@@ -31,6 +41,7 @@
 </template>
 
 <script>
+import db from './firebaseInit'
 import firebase from "firebase";
 var auth = firebase.auth();
 export default {
@@ -49,16 +60,26 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password) //saves to firebase authentication
         .then(
           (user) => {
-            var userID = auth.currentUser.uid;
-            console.log("hello there");
-            var db = firebase.firestore();
-            db.collection("users").doc(userID).set({
-              email: this.email,
-              //password: this.password,
+              var userID = auth.currentUser.uid
+              console.log("hello there");
+              var db = firebase.firestore();
+              db.collection('users').doc(userID).set({
+              email:  this.email,
               admin: false,
-              username: " ",
-              avatar: " ",
-              bio: " ",
+              username: this.username,
+              //avatar: " ",
+                inventory:[
+                     {"id": 1, "name": "face", "layer": 10,  "source": "yXmkvJX/face1.png"},
+                     {"id": 2, "name": "eye", "layer": 15, "source": "GCs470k/eye4.png"},
+                     {"id": 3, "name": "mouth","layer": 20,  "source": "YydVm1m/mouth2.png"},
+                     {"id": 4, "name": "nose", "layer": 25, "source": "xG60wWw/nose2.png"},
+                     {"id": 5, "name": "brow", "layer": 30, "source": "McjTk9b/brow1.png"},
+                     {"id": 6, "name": "hair", "layer": 35, "source": "qJrRKvg/hair4.png"},
+                     {"id": 7, "name": "accessory", "layer": 40, "source": "d6C3fhn/acc3.png"}
+             ],
+              bio: this.bio,
+              friendslist: []
+              
             });
             alert(`Account created for ${user.email}`);
             this.$router.push("/");

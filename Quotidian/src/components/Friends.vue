@@ -62,9 +62,22 @@
 	/* border: 3px solid violet; */
 }
 
-.avatar{
-	max-height: 100%;
-	max-width: 100%;
+input[type="text"] {
+  flex-grow: 1;
+  padding-left: 0.5rem;
+
+  color: inherit;
+
+  font-family: inherit;
+  font-size: 1.25rem;
+
+  background: transparent;
+  border: none;
+
+ /* &:focus,
+  &:active {
+    outline: none;
+  }*/
 }
 
 .Desp{

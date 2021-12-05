@@ -5,9 +5,10 @@ import ViewEmployee from "@/components/ViewEmployee";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
 import Calendar from "@/components/Calendar";
-import Friends from "@/components/Friends";
-import Home from "@/components/Homepage";
-import Avatar from "@/components/Avatar";
+import Followlist from "@/components/Followlist";
+import Profile from "@/components/Profile";
+import Homepage from "@/components/Homepage";
+import AvatarPage from "@/components/AvatarPage";
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -16,8 +17,8 @@ let router = new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home,
+      name: "homepage",
+      component: Homepage,
       meta: {
         requiresAuth: true
       }
@@ -31,17 +32,25 @@ let router = new Router({
       }
     },
     {
-      path: "/avatar",
-      name: "avatar",
-      component: Avatar,
+      path: "/AvatarPage",
+      name: "AvatarPage",
+      component: AvatarPage,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: "/friends",
-      name: "friends",
-      component: Friends,
+    path: "/Profile",
+    name: "Profile",
+    component: Profile,
+    meta: {
+      requiresAuth: true
+    }
+  },
+    {
+      path: "/followlist",
+      name: "followlist",
+      component: Followlist,
       meta: {
         requiresAuth: true
       }
@@ -70,6 +79,7 @@ let router = new Router({
         requiresAuth: true
       }
     },
+    
   ]
 });
 

@@ -1,50 +1,53 @@
- <template>
+<template>
   <nav>
-    <div class="nav-wrapper indigo accent-3 darken-1">
+    <div class="nav-wrapper">
       <div class="container">
-        <router-link to="/" class="deep-purple accent-1 brand-logo white-text"
+        <router-link to="/" class=" brand-logo white-text"
           >Quotidian</router-link
         >
         <ul class="right">
           <li v-if="isLoggedin">
-            <span class="email grey-text text-lighten-2">
-              {{ currentUser }}</span
-            >
+            <!--<span class="email grey-text text-lighten-2">
+              {{ currentUser }}</span-->
+            
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/"
+            <router-link class="navy darken-2 btn white-text" to="/"
               >Dashboard</router-link
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/calendar"
+            <router-link class="navy darken-2 btn white-text" to="/calendar"
               >Calendar</router-link
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/friends"
-              >Friends</router-link
-            >
-          </li>
-          <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/avatar"
+            <router-link class="navy darken-2 btn white-text" to="/AvatarPage"
               >Avatar</router-link
             >
           </li>
+         <li v-if="isLoggedin">
+            <router-link class="navy darken-2 btn white-text" to="/profile"
+              >Profile</router-link
+            >
+          </li>
+           <li v-if="isLoggedin">
+            <router-link class="navy darken-2 btn white-text" to="/followlist">Friends</router-link>
+          </li>
           <li v-if="!isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/login"
+            <router-link class="navy darken-2 btn white-text" to="/login"
               >Login</router-link
             >
           </li>
           <li v-if="!isLoggedin">
             <button>
-              <router-link class="amber darken-2 btn white-text" to="/register"
+              <router-link class="navy darken-2 btn white-text" to="/register"
                 >Register</router-link
               >
             </button>
           </li>
           <li v-if="isLoggedin">
-            <button v-on:click="logout" class="btn black">Logout</button>
+            <button v-on:click="logout" class="btn amber">Logout</button>
           </li>
         </ul>
       </div>
@@ -55,24 +58,30 @@
 
 <script>
 import firebase from "firebase";
-
+import db from './firebaseInit'
+var auth = firebase.auth()
 export default {
   name: "navbar",
-
   data() {
     return {
       isLoggedin: false,
-      currentUser: false,
+      currentUser: "",
     };
   },
-
   created() {
     if (firebase.auth().currentUser) {
+      var userID = auth.currentUser.uid
       this.isLoggedin = true;
-      this.currentUser = firebase.auth().currentUser.email;
+      db.collection('users').doc(userID).get().then((querySnapshot) =>{
+       
+          
+            this.currentUser = querySnapshot.data().username
+          
+         
+      })
+       
     }
   },
-
   methods: {
     logout: function () {
       firebase
@@ -86,12 +95,20 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
+
 .email {
   padding-right: 10px;
 }
-
 .brand-logo {
   border-radius: 25px;
+}
+.nav-wrapper {
+    position: relative;
+    height: 120%;
+    background-color: #051747;
+  
 }
 </style>

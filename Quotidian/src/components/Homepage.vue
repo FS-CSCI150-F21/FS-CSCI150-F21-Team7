@@ -16,31 +16,17 @@
     <section class="firstsection">
       <div class="box-main">
         <div class="firstHalf">
-        <h1 class="text-big" id="web"> <p class="border">Tasks</p></h1>
+        <h1 class="text-big" id="web"> <u class = "underline">Tasks</u></h1>
         <section class="task-list">
             <div id="tasks">
-              <li v-for="user in tasks" v-bind:key="user.id" class="collection-item">
+              <div v-for="user in tasks" v-bind:key="user.id" class="collection-item">
               <div class="chip">{{user.name}}</div>
               <div class = "date"> Start Date: {{user.start}} End Date: {{user.end}} </div>
-              Description: {{user.details}}
-              <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>
-            </li>
-          <!--<h1 class="text-big" id="web">Tasks List</h1>
-          <section class="task-list">
-            <div id="tasks">
-              \\ <div class="task">
-                <div class="content">
-                  <input
-                    type="text"
-                    class="text"
-                    value="My shiny task"
-                    readonly
-                  />
-                </div>
-                <div class="actions">
-                  <button class="complete">Complete</button>
-                </div>
-              </div> -->
+              <div class = "description"> Description: {{user.details}} </div>
+             <button v-on:click= "completeTask(user.taskID)" class="action" type="button">Complete </button> 
+              <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"></router-link>
+              <!-- <router-link class="secondary-content" v-bind:to="{ name: 'view-employee', params: { details: user.details }}"><i class="fa fa-eye"></i></router-link>-->
+            </div>
             </div>
           </section> 
         </div>
@@ -61,7 +47,7 @@
 <script>
   import db from './firebaseInit'
   import firebase from "firebase";
-    //var db = firebase.firestore();
+  var auth = firebase.auth()
   export default {
     name: 'home',
     data () {
@@ -70,57 +56,46 @@
         loading: true
       }
     },
+    name: 'completeTask',
+    data () {
+      return{
+          tasks: [],
+          loading: true
+      }
+    },
+    methods: {
+      async completeTask(taskid){
+         var userID = auth.currentUser.uid;
+          await db.collection(userID).doc(taskid).update({
+            completed: true,    
+          })
+          location.reload(false)
+        }
+    },
      created () {
-     //   var db = firebase.firestore();
       var auth = firebase.auth();
       var userID = auth.currentUser.uid;
+      
+      //checks for each users tasks, outputs them if they are not complete
       db.collection(userID).get().then((querySnapshot) => {
         this.loading = false
-        //console.log("data exists")
         querySnapshot.forEach((doc) => {
           const data = {
             'name': doc.data().name,
             'details': doc.data().details,
-           //'employee_id': doc.data().employee_id,
             'start': doc.data().start,
             'end': doc.data().end,
-            //'dept': doc.data().dept,
-            //'position': doc.data().position
+            'taskID': doc.id,
           }
-          this.tasks.push(data)
+          //console.log(doc.id)
+          if(doc.data().completed == false){
+             this.tasks.push(data)
+          }
         })
       })
-    }
+    },
+
   }
-
-window.addEventListener("load", () => {
-  const form = document.querySelector("#new-task-form");
-  const input = document.querySelector("#new-task-input");
-  const list_el = document.querySelector("#tasks");
-
-
-// Action buttons start here
-    const task_actions_el = document.createElement("div");
-    task_actions_el.classList.add("actions");
-    
-    const task_edit_el = document.createElement("button");
-    task_edit_el.classList.add("complete");
-    task_edit_el.innerHTML= "Complete";
-
-    task_actions_el.appendChild(task_complete_el);
-
-    task_el.appendChild(task_actions_el);
-
-    list_el.appendChild(task_el);
-
-    input.value = "";
-
-//Configuring the clickable buttons
-    task_complete_el.addEventListener("click", () =>{
-      list_el.removeChild(task_el);
-    });
-  });
-
 </script>
 
  <style scoped>
@@ -133,29 +108,34 @@ window.addEventListener("load", () => {
   --light: #eee;
   --pink: #ec4a99;
   --purple: #8b5cf6;
+  --darkblue: #051747
 }
-
 h1 {text-align: center;}
 
-.firstsection {
-  outline:4px solid black;
-  background-color: #3d5afe!important;
-  height: 700px;
+.collection{
+  margin-top: 1rem;
+  border: 5px solid #26a69a;
+  border-radius: 25px;
+
 }
 
+.firstsection {
+  background-color: #051747 ;
+  min-height: 800px;
+  height: auto;
+}
 .border{
  border-style:solid;
  border-color: white
 }
-
-
-
+.description{
+  width: 400px;
+  word-wrap: break-word;
+}
 .secondsection {
   background-color: #b388ff!important;
   height: 400px;
 }
-
-
 .box-main {
   display: flex;
   justify-content: center;
@@ -166,29 +146,23 @@ h1 {text-align: center;}
   padding: 2rem;
   height: auto;
 }
-
 .firsthalf {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 .secondhalf {
   width: 30%;
 }
-
 .text-big {
   font-family: "Piazzolla", serif;
   font-weight: bold;
   font-size: 35px;
 }
-
-
 .text-small {
   font-size: 18px;
 }
-
 .section {
   height: 400px;
   display: flex;
@@ -197,31 +171,27 @@ h1 {text-align: center;}
   max-width: 90%;
   margin: auto;
 }
-
 .paras {
   padding: 0px 65px;
 }
-
 .center {
   text-align: center;
 }
-
 .collection-item {
-    background-color:#b388ff!important;
+    background-color:#535F80;
     justify-content: space-between;
     line-height: 1.5rem;
-    padding: 10px 25px;
+    padding: 10px 70px 40px;
     margin: 0;
     border-bottom: 1px solid black;
     border-radius: 25px;
     margin-bottom: 1rem;
 }
-
 .chip {
     height: 32px;
     font-size: 15px;
     font-weight: 600;
-    color: #3d5afe!important;
+    color: #081F62;
     line-height: 32px;
     padding: 0 12px;
     border-radius: 16px;
@@ -230,43 +200,38 @@ h1 {text-align: center;}
     margin-right: 5px;
     
 }
-
 .secondary-content {
   color: blue;
-
 }
-
 *{
   box-sizing: border-box;
   margin: 0;
   font-family: 'Fira sans', sans-serif;
 }
-
 .task-list{
   padding: 1rem;
 }
-
 #tasks .task .actions{
   display: flex;
   margin: 0 -0.5rem;
 }
-
-.task .actions button{
+button.action{
   cursor: pointer;
+  font-size: 1rem;
   margin: 0 0.5rem;
-  font-size: 1.125rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  border-radius: 15px;
+  padding: 0px 10px;
+  overflow: hidden;
+  background-color: #26a69a;
+  outline: none;
+  float: right;
   transition: 0.4s;
 }
-.task .actions button:hover{
-  opacity: 0.8;
+button.action:hover{
+  opacity: 0.7;
 }
-.task .actions button:active{
+button.action:active{
   opacity: 0.6;
-}
-.task .actions .complete{
-   color: var(--darkest);
+  
 }
 </style>
-
