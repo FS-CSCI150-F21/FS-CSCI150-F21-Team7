@@ -7,9 +7,10 @@
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
         <div class="text">Bio: {{ user.bio }}</div>
         </div>
-        <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="flist"> Freinds List: {{ user.flist }}</div>
-        </div>
+             <div v-for="user in flist" v-bind:key="user.id" class="collection-item">
+                <div class="flist">   {{ user }}</div>
+            </div>
+       
     </div>
 </template>
 
@@ -26,6 +27,7 @@ export default{
         return{
             users: [],
             isLoggedin: false,
+            flist: [],
             currentUser: "",
             //showbox: true,
             editdesp: "",
@@ -48,13 +50,13 @@ export default{
         let currFriendsList = [];
          db.collection('users').doc(userID).get().then((querySnapshot) =>{
                // this.loading = false;
-              
+                this.flist = querySnapshot.data().friendslist
                const data = {
                     'currentUser': querySnapshot.data().username,
                     'bio': querySnapshot.data().bio,
-                    'flist': querySnapshot.data().friendslist
+                     
                }
-               console.log(querySnapshot.data().bio)
+              
                 this.users.push(data)
         })
        },
@@ -100,6 +102,9 @@ export default{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+}
+.people{
+
 }
 .picture{
     text-align: center;

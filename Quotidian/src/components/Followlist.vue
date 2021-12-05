@@ -17,8 +17,7 @@
                      <!-- <div id="options" v-if="seeoptions">-->
                       <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button>
                       <button v-on:click="showProfile(user.name)" class ="btn btn-large btn-extended grey lighten-4 black-text">View Profile</button>
-                      
-                   <div v-for="data in displayUsers" :key="data.id" >
+            <div v-for="data in displayUsers" :key="data.id" >
                         <img :src="`https://i.ibb.co/${data.source}`"
                         :id="`${data.name}`"  
                          :style= 
@@ -31,12 +30,13 @@
                               clip: rect(29px, 400px, 450px, 0);
                               `"
                     > 
-    </div>
- 
+                     
                  </div>
              </div>
           </div>
-      </div>
+      </div> 
+   </div>
+  
 </template>
 <style>
 template{
