@@ -200,7 +200,7 @@
     margin-right: auto;
     border: 8px solid rgb(0, 0, 0);
     padding: 0px;
-    height: 370px;
+    height: 475px;
     width: 400px;
     background-color: #316ff5;
 }
