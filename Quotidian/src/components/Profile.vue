@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="editprof"><button class="btn-small">Edit bios</button></div>
+        <!-- <div class="editprof"><button class="btn-small">Edit bios</button></div> -->
        
     </div>
 </template>
