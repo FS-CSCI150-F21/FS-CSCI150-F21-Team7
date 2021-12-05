@@ -2,10 +2,10 @@
     <div class="collection">
         <div class = "picture">A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="curr"> User Name: {{ user.currentUser }}</div>
+        <div class="text"> {{ user.currentUser }}</div>
         </div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="bio">Bio: {{ user.bio }}</div>
+        <div class="text">Bio: {{ user.bio }}</div>
         </div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
         <div class="flist"> Freinds List: {{ user.flist }}</div>
@@ -18,6 +18,7 @@
 import db from './firebaseInit';
 import firebase from "firebase";
 var auth = firebase.auth();
+
 //console.log(auth.currentUser.uid)
 export default{
     name: "users",
@@ -30,7 +31,7 @@ export default{
             editdesp: "",
             //ProfilePic: image,
             adesp: "",
-            bio: ""
+           // bio: ""
         }
     },
    /* name: "friends",
@@ -53,6 +54,7 @@ export default{
                     'bio': querySnapshot.data().bio,
                     'flist': querySnapshot.data().friendslist
                }
+               console.log(querySnapshot.data().bio)
                 this.users.push(data)
         })
        },
