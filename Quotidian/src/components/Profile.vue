@@ -1,20 +1,5 @@
 <template>
-<div class="avatarBackground" style="position:relative">
-    <div v-for="data in userAvatar" :key="data.id" >
-        <img :src="`https://i.ibb.co/${data.source}`"
-        :id="`${data.name}`"  
-            :style= 
-                "`
-                z-index: ${data.layer};
-                position:absolute; 
-                height: 500px;
-                top: 0em;
-                left: -5%;
-                clip: rect(29px, 400px, 450px, 0);
-                `"
-        > 
-    </div>
-
+ 
     <div class="collection">
         <div class = "picture">A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
@@ -81,7 +66,7 @@ export default{
                     'bio': querySnapshot.data().bio,
                      
                }
-                this.setUserAvatar()
+              //  this.setUserAvatar()
                 this.users.push(data)
         })
        },
