@@ -7,9 +7,9 @@
         >
         <ul class="right">
           <li v-if="isLoggedin">
-            <span class="email grey-text text-lighten-2">
-              {{ currentUser }}</span
-            >
+            <!--<span class="email grey-text text-lighten-2">
+              {{ currentUser }}</span-->
+            
           </li>
           <li v-if="isLoggedin">
             <router-link class="navy darken-2 btn white-text" to="/"
@@ -22,7 +22,7 @@
             >
           </li>
           <li v-if="isLoggedin">
-            <router-link class="amber darken-2 btn white-text" to="/AvatarPage"
+            <router-link class="navy darken-2 btn white-text" to="/AvatarPage"
               >Avatar</router-link
             >
           </li>
@@ -95,7 +95,10 @@ export default {
 };
 </script>
 
+
+
 <style scoped>
+
 .email {
   padding-right: 10px;
 }
