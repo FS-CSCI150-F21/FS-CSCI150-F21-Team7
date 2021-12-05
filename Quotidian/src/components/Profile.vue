@@ -1,4 +1,5 @@
 <template>
+
     <div class="collection">
         <div class = "picture">A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
@@ -26,6 +27,7 @@ export default{
     data() {
         return{
             users: [],
+            userAvatar: [],
             isLoggedin: false,
             flist: [],
             currentUser: "",
@@ -36,14 +38,22 @@ export default{
            // bio: ""
         }
     },
-   /* name: "friends",
-    data() {
-        return{
-            friends: [],
-            friendName: "",
-        }
-    },
-*/
+   
+   setUserAvatar() {
+                var userID = auth.currentUser.uid;
+                db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                  //allows to redraw at each function call, keeping it updated.
+                    //creates snapshot at usersID
+                    var currAvatar= [];
+                    var ava = [];
+                    ava = this.Json
+                    currAvatar = querySnapshot.data().inventory
+                    for(let i =0; i < currAvatar.length; i++){
+                       this.userAvatar[i] = currAvatar[i]
+                    } 
+                                      this.$forceUpdate()
+                })
+            },
     created() {
       //this.isLoggedin = true;
       var userID = auth.currentUser.uid; 

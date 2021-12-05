@@ -1,9 +1,28 @@
 <template>
-    <div id="profile" class="collection with-header">
-    <div class="profview">
-  
+  <div id="profile" class="profview">
+      
+      <div class="pfp" v-for="data in displayUsers" :key="data.id" >
+                        <img :src="`https://i.ibb.co/${data.source}`"
+                        :id="`${data.name}`"  
+                         :style= 
+                              "`
+                              z-index: ${data.layer};
+                              position: absolute; 
+                              height: 500px;
+                              top: 0em;
+                              left: -5%;
+                              clip: rect(29px, 400px, 450px, 0);
+                              `"
+                    >
     </div>
-    <div class="search blue">
+
+    <div class="info black" v-for="user in users" :key="user.id">
+                  <div class="username"><p>User:</p>{{user.name}}</div>
+                  <div class="userbio"><p>Bio:</p>{{user.details}}</div>
+    </div>
+  
+    
+    <div class="search black">
           <div class="input-field">
                 <div class="input-field">
                 <i class="material-icons prefix"></i>
@@ -11,38 +30,21 @@
                 <label class="white-text" for="email">Enter username</label>
           </div>
                 <button v-on:click="followlist"
-                  class="btn btn-large btn-extended grey lighten-4 black-text">Search</button>
+                  class="btn btn-small btn-extended grey lighten-4 black-text">Search</button>
                    <div v-for="user in users" v-bind:key="user.id" class="collection-item">
                     <div class="text">{{user.name}}</div>
                      <!-- <div id="options" v-if="seeoptions">-->
-                      <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button>
-                      <button v-on:click="showProfile(user.name)" class ="btn btn-large btn-extended grey lighten-4 black-text">View Profile</button>
-            <div v-for="data in displayUsers" :key="data.id" >
-                        <img :src="`https://i.ibb.co/${data.source}`"
-                        :id="`${data.name}`"  
-                         :style= 
-                              "`
-                              z-index: ${data.layer};
-                              position:absolute; 
-                              height: 500px;
-                              top: 0em;
-                              left: -5%;
-                              clip: rect(29px, 400px, 450px, 0);
-                              `"
-                    > 
-                     
+                      <button v-on:click="friendrequest" class ="btn btn-small btn-extended grey lighten-4 black-text">Follow</button>
+                      <button v-on:click="showProfile(user.name)" class ="btn btn-small btn-extended grey lighten-4 black-text">View Profile</button>
+                      
+ 
                  </div>
              </div>
           </div>
       </div> 
-   </div>
   
 </template>
-<style>
-template{
-  background-color: blueviolet
-}
-</style>
+
 <script>
 //lets see if we can implement the search function using login as
 // a template, change data to match with what u need
@@ -57,6 +59,8 @@ export default {
     return {
       users: [],
       displayUsers: [],
+      displayUsername: '',
+      displayUserbio: '',
       loading: true,
       usernames: "",
       content: 'Info of User',
@@ -164,3 +168,35 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+ 
+.profview{
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+}
+.search{
+  position: absolute;
+  width: 600px;
+  height: 1200px;
+}
+ .userinfo{
+  position: relative;
+  float: left;
+  margin: 100px;
+  width: 600px;
+  left: 600px;
+}
+.pfp{
+ position: relative;
+ left: 600px;
+ float: left;
+}
+.info{
+  position: relative;
+  float: left;
+  margin-top: 400px;
+  left: 600px;
+} 
+</style>
