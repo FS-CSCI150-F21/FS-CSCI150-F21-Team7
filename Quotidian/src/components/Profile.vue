@@ -33,7 +33,11 @@
             </div>
         </div>
 
+<<<<<<< HEAD
        <!-- <div class="editprof"><button class="btn-small">Edit bios</button></div> -->
+=======
+        <!-- <div class="editprof"><button class="btn-small">Edit bios</button></div> -->
+>>>>>>> da8aa68bdcb96572314d877a4880253bb0acc244
        
     </div>
 </template>
