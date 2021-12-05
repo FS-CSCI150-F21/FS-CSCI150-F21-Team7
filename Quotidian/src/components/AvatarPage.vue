@@ -1,6 +1,6 @@
 <template>
   <div id="avatarPage">
-
+ 
 <div class="avatarBackground" style="position:relative">
     <div v-for="data in userAvatar" :key="data.id" >
         <img :src="`https://i.ibb.co/${data.source}`"
@@ -137,7 +137,7 @@
                })
              
             },
-            setUserAvatar: function(){
+            setUserAvatar(){
                 var userID = auth.currentUser.uid;
                 db.collection('users').doc(userID).get().then((querySnapshot) =>{
                   //allows to redraw at each function call, keeping it updated.

@@ -16,13 +16,13 @@
                     >
     </div>
 
-    <div class="info" v-for="user in users" :key="user.id">
+    <div class="info black" v-for="user in users" :key="user.id">
                   <div class="username"><p>User:</p>{{user.name}}</div>
                   <div class="userbio"><p>Bio:</p>{{user.details}}</div>
     </div>
   
     
-    <div class="search blue">
+    <div class="search black">
           <div class="input-field">
                 <div class="input-field">
                 <i class="material-icons prefix"></i>
@@ -41,7 +41,8 @@
                  </div>
              </div>
           </div>
-      </div>
+      </div> 
+  
 </template>
 
 <script>
@@ -169,6 +170,7 @@ export default {
 </script>
 
 <style scoped>
+ 
 .profview{
   position: absolute;
   width: 1200px;

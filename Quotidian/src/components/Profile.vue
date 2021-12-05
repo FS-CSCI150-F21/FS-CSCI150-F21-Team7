@@ -1,4 +1,5 @@
 <template>
+ 
     <div class="collection">
         <div class = "picture">A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
@@ -7,9 +8,10 @@
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
         <div class="text">Bio: {{ user.bio }}</div>
         </div>
-        <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="flist"> Freinds List: {{ user.flist }}</div>
-        </div>
+             <div v-for="user in flist" v-bind:key="user.id" class="collection-item">
+                <div class="flist">   {{ user }}</div>
+            </div>
+       
     </div>
 </template>
 
@@ -25,7 +27,9 @@ export default{
     data() {
         return{
             users: [],
+            userAvatar: [],
             isLoggedin: false,
+            flist: [],
             currentUser: "",
             //showbox: true,
             editdesp: "",
@@ -34,27 +38,35 @@ export default{
            // bio: ""
         }
     },
-   /* name: "friends",
-    data() {
-        return{
-            friends: [],
-            friendName: "",
-        }
-    },
-*/
+   
+   setUserAvatar() {
+                var userID = auth.currentUser.uid;
+                db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                  //allows to redraw at each function call, keeping it updated.
+                    //creates snapshot at usersID
+                    var currAvatar= [];
+                    var ava = [];
+                    ava = this.Json
+                    currAvatar = querySnapshot.data().inventory
+                    for(let i =0; i < currAvatar.length; i++){
+                       this.userAvatar[i] = currAvatar[i]
+                    } 
+                                      this.$forceUpdate()
+                })
+            },
     created() {
       //this.isLoggedin = true;
       var userID = auth.currentUser.uid; 
         let currFriendsList = [];
          db.collection('users').doc(userID).get().then((querySnapshot) =>{
                // this.loading = false;
-              
+                this.flist = querySnapshot.data().friendslist
                const data = {
                     'currentUser': querySnapshot.data().username,
                     'bio': querySnapshot.data().bio,
-                    'flist': querySnapshot.data().friendslist
+                     
                }
-               console.log(querySnapshot.data().bio)
+              //  this.setUserAvatar()
                 this.users.push(data)
         })
        },
@@ -100,6 +112,9 @@ export default{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+}
+.people{
+
 }
 .picture{
     text-align: center;
