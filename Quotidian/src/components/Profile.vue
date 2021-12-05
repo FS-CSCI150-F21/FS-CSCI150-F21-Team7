@@ -113,9 +113,7 @@ export default{
     margin-left: auto;
     margin-right: auto;
 }
-.people{
 
-}
 .picture{
     text-align: center;
 }

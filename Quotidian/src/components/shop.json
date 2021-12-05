@@ -1,7 +1,7 @@
 [
     {
         "id": 1, 
-        "name": "Face", 
+        "name": "face", 
         "source": {
             "face1": "yXmkvJX/face1.png",
             "face2": "JvfJb4K/face2.png",
@@ -21,7 +21,7 @@
 
     {
         "id": 2, 
-        "name": "Mouth",
+        "name": "mouth",
         "source": 
         {
             "mouth1": "9gcDc7m/mouth1.png",
@@ -41,7 +41,7 @@
     },
     {
         "id": 3, 
-        "name": "Eyes", 
+        "name": "eye", 
         "source": {
             "eye1": "LJkLv0w/eye1.png",
             "eye2": "WfDLgLY/eye2.png",
@@ -57,7 +57,7 @@
         ]   
     },    {
         "id": 4, 
-        "name": "Nose",
+        "name": "nose",
         "source": {
             "nose1": "vwyfdZ7/nose1.png",
             "nose2": "xG60wWw/nose2.png",
@@ -73,7 +73,7 @@
         ]     
     },   {
         "id": 5, 
-        "name": "Brows",
+        "name": "brow",
         "source": {
             "brow1": "McjTk9b/brow1.png",
             "brow2": "9YcwTF6/brow2.png",
@@ -89,7 +89,7 @@
         ]     
     },    {
         "id": 6, 
-        "name": "Hair", 
+        "name": "hair", 
         "source": {
             "hair1": "XznYfkk/hair1.png",
             "hair2": "NYxMWNp/hair2.png",
@@ -106,7 +106,7 @@
     },    
     {
         "id": 7, 
-        "name": "Accessory",
+        "name": "accessory",
         "source": {
             "accessory1": "TLdd03X/acc1.png",
             "accessory2": "RNVc1MN/acc2.png",
