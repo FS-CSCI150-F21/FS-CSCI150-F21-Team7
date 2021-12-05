@@ -187,6 +187,7 @@
 </script>
 
 <style scoped>
+
 .item{
     border: 4px solid rgb(0, 0, 0);
     width:250px;
@@ -202,7 +203,7 @@
     padding: 0px;
     height: 475px;
     width: 400px;
-    background-color: #316ff5;
+    background-color: #081F62;
 }
 .itemsArea{
     position: relative;
@@ -212,13 +213,13 @@
     border: 0px solid rgb(0, 0, 0);
 }
 .button{
-  padding: 9px 20px;
+  padding: 9px 51px;
   font-size: 20px;
   cursor: pointer;
   text-align: center;
   outline: none;
   color: #fff;
-  background-color: #316ff5;
+  background-color: #081F62;
   border-radius: 6px;
   box-shadow: 0 9px rgb(0, 0, 0);
   float: left;
@@ -226,17 +227,18 @@
 }
 .avatarButton{
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;  
-  padding: 9px 20px;
+  padding: 9px 15px;
   font-size: 20px;
   cursor: pointer;
   text-align: center;
   outline: none;
   color: #fff;
-  background-color: #316ff5;
+  background-color: #081F62;
   border-radius: 6px;
   box-shadow: 0 9px rgb(0, 0, 0);
   float: left;
   border: 4px solid rgb(0, 0, 0);
+  margin-bottom: 50px;
 }
 .avatarButton:hover{
     background-color: #6f94ec;
