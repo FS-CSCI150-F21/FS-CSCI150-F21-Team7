@@ -1,6 +1,6 @@
 <template>
   <div id="profile" class="profview">
-      
+      <div v-if="seebio"> 
       <div class="pfp" v-for="data in displayUsers" :key="data.id" >
                         <img :src="`https://i.ibb.co/${data.source}`"
                         :id="`${data.name}`"  
@@ -16,27 +16,31 @@
                     >
     </div>
 
-    <div class="info black" v-for="user in users" :key="user.id">
+    <div class="info" v-for="user in users" :key="user.id">
                   <div class="username"><p>User:</p>{{user.name}}</div>
                   <div class="userbio"><p>Bio:</p>{{user.details}}</div>
     </div>
+      </div>
   
     
-    <div class="search black">
+    <div class="search">
           <div class="input-field">
                 <div class="input-field">
                 <i class="material-icons prefix"></i>
-                <input type="text" id="usernames" v-model="usernames" />
+                <input type="text" id="usernames" class="white-text" v-model="usernames" />
                 <label class="white-text" for="email">Enter username</label>
           </div>
                 <button v-on:click="followlist"
                   class="btn btn-small btn-extended grey lighten-4 black-text">Search</button>
                    <div v-for="user in users" v-bind:key="user.id" class="collection-item">
+                    <div class="foundusers">
                     <div class="text">{{user.name}}</div>
                      <!-- <div id="options" v-if="seeoptions">-->
+                       <div class="right">
                       <button v-on:click="friendrequest" class ="btn btn-small btn-extended grey lighten-4 black-text">Follow</button>
                       <button v-on:click="showProfile(user.name)" class ="btn btn-small btn-extended grey lighten-4 black-text">View Profile</button>
-                      
+                       </div>
+                    </div>
  
                  </div>
              </div>
@@ -64,7 +68,7 @@ export default {
       loading: true,
       usernames: "",
       content: 'Info of User',
-      content2: 'A search bar',
+      seebio: false,
     }
   },
   name: "friendrequest",
@@ -93,7 +97,11 @@ export default {
         })
       })
     },
+    displayuserinfo(){
+      this.seebio = true
+    },
     showProfile: function(friendname){
+                this.displayuserinfo()
                 db.collection('users').get().then((querySnapshot) =>{
                 var currAvatar= [];
                   querySnapshot.forEach((doc) =>{
@@ -173,15 +181,36 @@ export default {
  
 .profview{
   position: absolute;
+  border: 5px solid #26a69a;
+  background-color: #051747;
+  border-radius: 25px;
   width: 1200px;
   height: 1200px;
 }
 .search{
+  background-color: #051747;
   position: absolute;
+  border-radius: 25px;
   width: 600px;
   height: 1200px;
 }
+.foundusers{
+    background-color:#535F80;
+    justify-content: space-between;
+    line-height: 1.5rem;
+    padding: 10px 70px 40px;
+    margin: 0;
+    border-bottom: 1px solid black;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+    color: white;
+    width: 100%;
+    font-size: 200%;
+    margin-left: auto;
+    margin-right: auto;
+}
  .userinfo{
+   border-radius: 25px;
   position: relative;
   float: left;
   margin: 100px;
@@ -190,13 +219,16 @@ export default {
 }
 .pfp{
  position: relative;
- left: 600px;
+ left: 650px;
  float: left;
 }
 .info{
   position: relative;
   float: left;
+  background-color: #535F80;
+  border: 5px solid black;
+  border-radius: 25px;
   margin-top: 400px;
-  left: 600px;
+  left: 700px;
 } 
 </style>

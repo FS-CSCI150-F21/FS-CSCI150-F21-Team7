@@ -1,14 +1,33 @@
 <template>
- 
+<!-- <div class="avatarBackground" style="position:relative">
+    <div v-for="data in userAvatar" :key="data.id" >
+        <img :src="`https://i.ibb.co/${data.source}`"
+        :id="`${data.name}`"  
+            :style= 
+                "`
+                z-index: ${data.layer};
+                position:absolute; 
+                height: 500px;
+                top: 0em;
+                left: -5%;
+                clip: rect(29px, 400px, 450px, 0);
+                `"
+        > 
+    </div> -->
+
+
     <div class="collection">
         <div class = "picture">A Picture</div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
+            <p class>Username:</p>
         <div class="text"> {{ user.currentUser }}</div>
         </div>
         <div v-for="user in users" v-bind:key="user.id" class="collection-item">
-        <div class="text">Bio: {{ user.bio }}</div>
+            <p>Bio:</p>
+        <div class="text">{{ user.bio }}</div>
         </div>
              <div v-for="user in flist" v-bind:key="user.id" class="collection-item">
+                 <p>Friends:</p>
                 <div class="flist">   {{ user }}</div>
             </div>
        
@@ -20,7 +39,6 @@
 import db from './firebaseInit';
 import firebase from "firebase";
 var auth = firebase.auth();
-
 //console.log(auth.currentUser.uid)
 export default{
     name: "users",
@@ -66,7 +84,10 @@ export default{
                     'bio': querySnapshot.data().bio,
                      
                }
+
+                //this.setUserAvatar()
               //  this.setUserAvatar()
+
                 this.users.push(data)
         })
        },
@@ -112,9 +133,6 @@ export default{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-}
-.people{
-
 }
 .picture{
     text-align: center;
