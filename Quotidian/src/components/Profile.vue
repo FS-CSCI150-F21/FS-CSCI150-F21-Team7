@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="editprof"><button class="btn-small">Edit bios</button></div>
+       <!-- <div class="editprof"><button class="btn-small">Edit bios</button></div> -->
        
     </div>
 </template>
@@ -141,10 +141,9 @@ export default{
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
 }
 .felement {
-   background-color:#a4b8ee;
+   background-color: #26a69a;
     justify-content: space-between;
     line-height: 1.5rem;
     padding: 10px 70px 40px;

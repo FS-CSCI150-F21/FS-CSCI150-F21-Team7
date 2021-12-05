@@ -37,8 +37,9 @@
                     <div class="text">{{user.name}}</div>
                      <!-- <div id="options" v-if="seeoptions">-->
                        <div class="right">
-                      <button v-on:click="friendrequest" class ="btn btn-small btn-extended grey lighten-4 black-text">Follow</button>
-                      <button v-on:click="showProfile(user.name)" class ="btn btn-small btn-extended grey lighten-4 black-text">View Profile</button>
+                      <button v-on:click="friendrequest" class ="btn btn-small btn-extended navy lighten-4 white-text">Follow</button>
+
+                      <button v-on:click="showProfile(user.name)" class ="btn btn-small btn-extended navy lighten-4 white-text">View Profile</button>
                        </div>
                     </div>
  
@@ -194,15 +195,16 @@ export default {
   border-radius: 25px;
   width: 600px;
   height: 1200px;
+  margin-bottom: 1rem;
 }
 .foundusers{
     background-color:#535F80;
     justify-content: space-between;
-    line-height: 1.5rem;
-    padding: 10px 70px 40px;
+    line-height: 2rem;
+    padding: 20px 70px 40px;
     margin: 0;
     border-bottom: 1px solid black;
-    border-radius: 25px;
+    border-radius: 30px;
     margin-bottom: 1rem;
     color: white;
     width: 100%;
@@ -231,5 +233,7 @@ export default {
   border-radius: 25px;
   margin-top: 400px;
   left: 700px;
+  
 } 
+
 </style>
