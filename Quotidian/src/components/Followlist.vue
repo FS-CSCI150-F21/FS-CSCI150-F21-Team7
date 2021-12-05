@@ -16,7 +16,23 @@
                     <div class="text">{{user.name}}</div>
                      <!-- <div id="options" v-if="seeoptions">-->
                       <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">Follow</button>
-                      <button v-on:click="friendrequest" class ="btn btn-large btn-extended grey lighten-4 black-text">View Profile</button>
+                      <button v-on:click="showProfile(user.name)" class ="btn btn-large btn-extended grey lighten-4 black-text">View Profile</button>
+                      
+                   <div v-for="data in displayUsers" :key="data.id" >
+                        <img :src="`https://i.ibb.co/${data.source}`"
+                        :id="`${data.name}`"  
+                         :style= 
+                              "`
+                              z-index: ${data.layer};
+                              position:absolute; 
+                              height: 500px;
+                              top: 0em;
+                              left: -5%;
+                              clip: rect(29px, 400px, 450px, 0);
+                              `"
+                    > 
+    </div>
+ 
                  </div>
              </div>
           </div>
@@ -43,6 +59,7 @@ export default {
   data: function () {
     return {
       users: [],
+      displayUsers: [],
       loading: true,
       usernames: "",
       content: 'Info of User',
@@ -63,8 +80,10 @@ export default {
         this.users = [];
        //checks through database for each documented ID username.
         querySnapshot.forEach((doc) => {
+          //console.log(doc.data().username)
           if(this.usernames.trim() == doc.data().username.trim() ){
               const data = {
+                // sets the name to be displayed for a successful search
                       'name': doc.data().username,
                       'details': doc.data().bio,
               }
@@ -73,6 +92,34 @@ export default {
         })
       })
     },
+    showProfile: function(friendname){
+                db.collection('users').get().then((querySnapshot) =>{
+                var currAvatar= [];
+                  querySnapshot.forEach((doc) =>{
+                     if(friendname == doc.data().username.trim() ){
+                         currAvatar = doc.data().inventory  
+                         console.log(currAvatar)
+                         this.displayUsers = currAvatar
+                       /* for(let i = 0; i < currAvatar.length; i++){
+                             this.displayUsers[i] = currAvatar[i]
+                            } */
+                        console.log(this.displayUsers)
+                           this.$forceUpdate()
+
+                     }
+                  })
+                })
+               /* db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                  //allows to redraw at each function call, keeping it updated.
+                    //creates snapshot at usersID
+                    var currAvatar= [];
+                    currAvatar = querySnapshot.data().inventory
+                    for(let i =0; i < currAvatar.length; i++){
+                       this.userAvatar[i] = currAvatar[i]
+                    } 
+                                      this.$forceUpdate()
+                })*/
+            },
     friendrequest: function(e){
         var userID = auth.currentUser.uid;
         let currFriendsList = [];
@@ -93,6 +140,7 @@ export default {
                  if (checkers == false){
                   currFriendsList.push(this.usernames)
                    db.collection('users').doc(userID).update({
+                     //adds the newly followed person to the array of followed in users data
                       friendslist: currFriendsList
                         })
                            alert(`you followed ${this.usernames}` );

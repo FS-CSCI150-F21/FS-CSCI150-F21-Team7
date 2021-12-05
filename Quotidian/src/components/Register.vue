@@ -77,7 +77,8 @@ export default {
                      {"id": 6, "name": "hair", "layer": 35, "source": "qJrRKvg/hair4.png"},
                      {"id": 7, "name": "accessory", "layer": 40, "source": "d6C3fhn/acc3.png"}
              ],
-              bio: " ",
+              bio: this.bio,
+              friendslist: []
               
             });
             alert(`Account created for ${user.email}`);

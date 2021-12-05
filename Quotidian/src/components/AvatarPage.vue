@@ -14,10 +14,7 @@
                 left: -5%;
                 clip: rect(29px, 400px, 450px, 0);
                 `"
-        >
-        
-      
-
+        > 
     </div>
 </div>
     <br>
@@ -90,7 +87,6 @@
     import db from "./firebaseInit";
     import firebase from "firebase";
     var auth= firebase.auth();
-  
   
     export default {
         name: "avatar",
