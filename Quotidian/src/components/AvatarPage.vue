@@ -107,17 +107,6 @@
     
             }
         },
-      /*  
-       name: "userAvatar",
-        data: function () {
-           return {
-               id: 1,
-               source: "",
-               layer: 10,
-               userAvatar: []
-            }
-        },
-        */
         methods: {
             
            setNoseDB: function(ID,index){
@@ -183,6 +172,9 @@
                 }
             },
         },
+        created(){
+            this.setUserAvatar();
+        }
     }
 </script>
 
@@ -201,7 +193,7 @@
     margin-right: auto;
     border: 8px solid rgb(0, 0, 0);
     padding: 0px;
-    height: 475px;
+    height: 400px;
     width: 400px;
     background-color: #081F62;
 }

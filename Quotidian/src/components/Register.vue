@@ -46,7 +46,6 @@ import firebase from "firebase";
 var auth = firebase.auth();
 export default {
   name: "register",
-
   data: function () {
     return {
       email: "",

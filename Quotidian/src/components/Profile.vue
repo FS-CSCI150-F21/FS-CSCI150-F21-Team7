@@ -1,5 +1,6 @@
 <template>
-<!-- <div class="avatarBackground" style="position:relative">
+    <div id="Profile">
+     <div class="avatarBackground" style="position:relative">
     <div v-for="data in userAvatar" :key="data.id" >
         <img :src="`https://i.ibb.co/${data.source}`"
         :id="`${data.name}`"  
@@ -13,11 +14,12 @@
                 clip: rect(29px, 400px, 450px, 0);
                 `"
         > 
-    </div> -->
+    </div>
+    </div>
 
 
     <div class="collection">
-        <div class = "picture">A Picture</div>
+        <br>
         <div v-for="user in users" v-bind:key="user.id" class="element">
             <p class>Username:</p>
         <div class="text"> {{ user.currentUser }}</div>
@@ -36,6 +38,7 @@
        <!-- <div class="editprof"><button class="btn-small">Edit bios</button></div> -->
 
     </div>
+    </div>
 </template>
 
 <script>
@@ -46,7 +49,7 @@ var auth = firebase.auth();
 //console.log(auth.currentUser.uid)
 export default{
     name: "users",
-    data() {
+    data: function() {
         return{
             users: [],
             userAvatar: [],
@@ -60,25 +63,27 @@ export default{
            // bio: ""
         }
     },
-   
-   setUserAvatar() {
-                var userID = auth.currentUser.uid;
-                db.collection('users').doc(userID).get().then((querySnapshot) =>{
-                  //allows to redraw at each function call, keeping it updated.
-                    //creates snapshot at usersID
-                    var currAvatar= [];
-                    var ava = [];
-                    ava = this.Json
-                    currAvatar = querySnapshot.data().inventory
-                    for(let i =0; i < currAvatar.length; i++){
-                       this.userAvatar[i] = currAvatar[i]
-                    } 
-                                      this.$forceUpdate()
-                })
-            },
+   methods:{
+       setUserAvatar() {
+        var userID = auth.currentUser.uid;
+            db.collection('users').doc(userID).get().then((querySnapshot) =>{
+                //allows to redraw at each function call, keeping it updated.
+                //creates snapshot at usersID
+                var currAvatar= [];
+                var ava = [];
+                ava = this.Json
+                currAvatar = querySnapshot.data().inventory
+                for(let i =0; i < currAvatar.length; i++){
+                    this.userAvatar[i] = currAvatar[i]
+                } 
+                                    this.$forceUpdate()
+            })
+        },
+   },
     created() {
       //this.isLoggedin = true;
       var userID = auth.currentUser.uid; 
+        this.setUserAvatar();
         let currFriendsList = [];
          db.collection('users').doc(userID).get().then((querySnapshot) =>{
                // this.loading = false;
@@ -88,10 +93,7 @@ export default{
                     'bio': querySnapshot.data().bio,
                      
                }
-
                 //this.setUserAvatar()
-              //  this.setUserAvatar()
-
                 this.users.push(data)
         })
        },
@@ -110,6 +112,19 @@ export default{
 </script>
 
 <style scoped>
+.avatarBackground{
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: 9%;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 8px solid rgb(0, 0, 0);
+    padding: 0px;
+    height: 400px;
+    width: 400px;
+    background-color: #081F62;
+}
 .editprof{
     position: relative;
     left: 600px;
