@@ -11,7 +11,7 @@
                 height: 500px;
                 top: 0em;
                 left: -5%;
-                clip: rect(29px, 400px, 450px, 0);
+                clip: rect(29px, 400px, 400px, 0);
                 `"
         > 
     </div>
@@ -119,7 +119,7 @@ export default{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 8px solid rgb(0, 0, 0);
+    border: 8px solid #26a69a;
     padding: 0px;
     height: 400px;
     width: 400px;

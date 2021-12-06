@@ -12,7 +12,7 @@
                 height: 500px;
                 top: 0em;
                 left: -5%;
-                clip: rect(29px, 400px, 450px, 0);
+                clip: rect(29px, 400px, 400px, 0);
                 `"
         > 
     </div>
